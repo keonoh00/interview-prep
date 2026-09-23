@@ -14,9 +14,10 @@ uv run solutions/hash-maps/contains_duplicate.py  # one problem
 Replace `raise NotImplementedError` with your code and it checks against LeetCode's
 own examples.
 
-Once LeetCode accepts your solution, ask Claude to check it. If it's reasonable,
-Claude says so briefly, with its time and space complexity, and you move on. If it
-misses what the question is teaching, Claude stops you and gives a hint.
+Once LeetCode accepts your solution, ask Claude to check it. If it's good, Claude
+says so briefly, with its time and space complexity, and you move on. If it misses
+what the question is teaching, or has waste an interviewer would call out, Claude
+stops you and says what to fix.
 
 ## The header
 

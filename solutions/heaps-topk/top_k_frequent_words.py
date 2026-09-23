@@ -24,7 +24,12 @@ Example 2:
     with the number of occurrence being 4, 3, 2 and 1 respectively.
 
 Constraints:
-1 Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
+  - 1 <= words.length <= 500
+  - 1 <= words[i].length <= 10
+  - words[i] consists of lowercase English letters.
+  - k is in the range [1, The number of unique words[i]]
+
+Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
 
 Tags: array, hash-table, string, trie, sorting, heap-priority-queue, bucket-sort,
       counting"""

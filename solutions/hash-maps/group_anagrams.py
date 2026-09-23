@@ -31,17 +31,29 @@ Constraints:
 
 Tags: array, hash-table, string, sorting"""
 
+
 class Solution:
     def groupAnagrams(self, strs: list[str]) -> list[list[str]]:
-        raise NotImplementedError
+        finalOutput = dict()
+        for item in strs:
+            sortedItem = sorted(item)
+            itemAsKey = "".join(sortedItem)
+            if itemAsKey in finalOutput:
+                finalOutput[itemAsKey].append(item)
+
+            else:
+                finalOutput[itemAsKey] = [item]
+
+        return list(finalOutput.values())
+
 
 CASES = [
     (
-        (['eat', 'tea', 'tan', 'ate', 'nat', 'bat'],),
-        [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']],
+        (["eat", "tea", "tan", "ate", "nat", "bat"],),
+        [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]],
     ),
-    (([''],), [['']]),
-    ((['a'],), [['a']]),
+    (([""],), [[""]]),
+    ((["a"],), [["a"]]),
 ]
 
 if __name__ == "__main__":

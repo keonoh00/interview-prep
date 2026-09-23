@@ -27,9 +27,12 @@ Constraints:
 
 Tags: array, hash-table, sorting"""
 
+
 class Solution:
     def containsDuplicate(self, nums: list[int]) -> bool:
-        raise NotImplementedError
+        seen = set(nums)
+        return len(seen) != len(nums)
+
 
 CASES = [
     (([1, 2, 3, 1],), True),

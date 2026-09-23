@@ -21,9 +21,10 @@ approach, but be strict about two things:
 
 1. **Understanding.** The solution uses the idea the question is built around,
    such as a hash map, two pointers or binary search, and the user could explain
-   why it works. Brute force where the question is about a hash map, an approach
-   that only passes because LeetCode's inputs are small, or a solution reached
-   only after a big hint all fail this.
+   why it works. Brute force where the question is about a hash map, or an
+   approach that only passes because LeetCode's inputs are small, fails this. If
+   they needed a big hint, check that they can explain the idea, but don't ask
+   for a second version of the solution; the user finds that too much.
 2. **Clean code.** No waste an interviewer would call out: the same value computed
    several times, clumsy conversions such as `str()` of a list used as a key, or
    steps that do nothing. This is usually why LeetCode ranks a correct solution

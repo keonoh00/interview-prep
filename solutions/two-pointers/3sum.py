@@ -48,4 +48,4 @@ CASES = [
 if __name__ == "__main__":
     from interview_prep import run
 
-    run(Solution().threeSum, CASES)
+    run(Solution().threeSum, CASES, any_order=True)

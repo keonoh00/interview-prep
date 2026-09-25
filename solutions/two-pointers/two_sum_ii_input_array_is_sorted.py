@@ -46,9 +46,24 @@ Constraints:
 
 Tags: array, two-pointers, binary-search"""
 
+
 class Solution:
     def twoSum(self, numbers: list[int], target: int) -> list[int]:
-        raise NotImplementedError
+        i = 0
+        j = len(numbers) - 1
+        while i < j:
+            num_1 = numbers[i]
+            num_2 = numbers[j]
+            added = num_1 + num_2
+            if added == target:
+                break
+            if added < target:
+                i += 1
+            else:
+                j -= 1
+
+        return [i + 1, j + 1]
+
 
 CASES = [
     (([2, 7, 11, 15], 9), [1, 2]),

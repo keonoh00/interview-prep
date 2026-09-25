@@ -32,14 +32,32 @@ Constraints:
 
 Tags: two-pointers, string"""
 
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        raise NotImplementedError
+        i = 0
+        j = len(s) - 1
+        while i < j:
+            left_char = s[i]
+            right_char = s[j]
+            if not left_char.isalnum():
+                i += 1
+                continue
+            if not right_char.isalnum():
+                j -= 1
+                continue
+
+            if left_char.lower() != right_char.lower():
+                return False
+            i += 1
+            j -= 1
+        return True
+
 
 CASES = [
-    (('A man, a plan, a canal: Panama',), True),
-    (('race a car',), False),
-    ((' ',), True),
+    (("A man, a plan, a canal: Panama",), True),
+    (("race a car",), False),
+    ((" ",), True),
 ]
 
 if __name__ == "__main__":

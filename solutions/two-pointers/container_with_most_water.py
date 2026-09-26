@@ -34,9 +34,29 @@ Constraints:
 
 Tags: array, two-pointers, greedy"""
 
+
 class Solution:
     def maxArea(self, height: list[int]) -> int:
-        raise NotImplementedError
+        largest = 0
+        i = 0
+        j = len(height) - 1
+        while i < j:
+            x = j - i
+            left_height = height[i]
+            right_height = height[j]
+            if left_height > right_height:
+                y = right_height
+                j -= 1
+            else:
+                y = left_height
+                i += 1
+
+            area = x * y
+            if area > largest:
+                largest = area
+
+        return largest
+
 
 CASES = [
     (([1, 8, 6, 2, 5, 4, 8, 3, 7],), 49),

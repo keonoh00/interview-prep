@@ -40,27 +40,31 @@ Constraints:
 
 Tags: stack, design"""
 
+
 class MinStack:
 
     def __init__(self):
-        raise NotImplementedError
-
+        self._stack: list[int] = []
+        self._min = []
 
     def push(self, value: int) -> None:
-        raise NotImplementedError
+        self._stack.append(value)
+        if len(self._min) == 0:
+            minimum = value
+        else:
+            minimum = min(value, self._min[-1])
 
+        self._min.append(minimum)
 
     def pop(self) -> None:
-        raise NotImplementedError
-
+        self._stack.pop()
+        self._min.pop()
 
     def top(self) -> int:
-        raise NotImplementedError
-
+        return self._stack[-1]
 
     def getMin(self) -> int:
-        raise NotImplementedError
-
+        return self._min[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
@@ -72,8 +76,10 @@ class MinStack:
 
 CASES = [
     (
-        (['MinStack', 'push', 'push', 'push', 'getMin', 'pop', 'top', 'getMin'],
-         [[], [-2], [0], [-3], [], [], [], []]),
+        (
+            ["MinStack", "push", "push", "push", "getMin", "pop", "top", "getMin"],
+            [[], [-2], [0], [-3], [], [], [], []],
+        ),
         [None, None, None, None, -3, None, 0, -2],
     ),
 ]

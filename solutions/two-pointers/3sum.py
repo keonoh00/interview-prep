@@ -35,14 +35,42 @@ Constraints:
 
 Tags: array, two-pointers, sorting"""
 
+
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        raise NotImplementedError
+        sorted_nums = sorted(nums)
+        container = []
+
+        for starting in range(len(sorted_nums) - 2):
+            if starting > 0 and sorted_nums[starting] == sorted_nums[starting - 1]:
+                continue
+
+            num_1 = sorted_nums[starting]
+            i = starting + 1
+            j = len(sorted_nums) - 1
+
+            while i < j:
+                num_2 = sorted_nums[i]
+                num_3 = sorted_nums[j]
+                added = num_1 + num_2 + num_3
+                if added == 0:
+                    container.append([num_1, num_2, num_3])
+                    j -= 1
+                    while i < j and sorted_nums[i] == num_2:
+                        i += 1
+                elif added < 0:
+                    i += 1
+                else:
+                    j -= 1
+
+        return container
+
 
 CASES = [
     (([-1, 0, 1, 2, -1, -4],), [[-1, -1, 2], [-1, 0, 1]]),
     (([0, 1, 1],), []),
     (([0, 0, 0],), [[0, 0, 0]]),
+    (([-100, -70, -60, 110, 120, 130, 160],), [[-100, -60, 160], [-70, -60, 130]]),
 ]
 
 if __name__ == "__main__":

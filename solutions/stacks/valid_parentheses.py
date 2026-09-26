@@ -39,16 +39,36 @@ Constraints:
 
 Tags: string, stack, bracket-sequences"""
 
+
 class Solution:
     def isValid(self, s: str) -> bool:
-        raise NotImplementedError
+        conversion_map = {
+            ")": "(",
+            "}": "{",
+            "]": "[",
+        }
+        open_brackets = []
+        for brack in s:
+            if brack in conversion_map:
+                if (
+                    len(open_brackets) == 0
+                    or open_brackets[-1] != conversion_map[brack]
+                ):
+                    return False
+                open_brackets.pop()
+            else:
+
+                open_brackets.append(brack)
+
+        return len(open_brackets) == 0
+
 
 CASES = [
-    (('()',), True),
-    (('()[]{}',), True),
-    (('(]',), False),
-    (('([])',), True),
-    (('([)]',), False),
+    (("()",), True),
+    (("()[]{}",), True),
+    (("(]",), False),
+    (("([])",), True),
+    (("([)]",), False),
 ]
 
 if __name__ == "__main__":

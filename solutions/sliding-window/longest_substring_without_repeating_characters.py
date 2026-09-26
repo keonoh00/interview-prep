@@ -31,14 +31,25 @@ Constraints:
 
 Tags: hash-table, string, sliding-window"""
 
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        raise NotImplementedError
+        max_length = 0
+        left = 0
+        window_chars = set()
+        for right in range(len(s)):
+            while s[right] in window_chars:
+                window_chars.remove(s[left])
+                left += 1
+            window_chars.add(s[right])
+            max_length = max(max_length, right - left + 1)
+        return max_length
+
 
 CASES = [
-    (('abcabcbb',), 3),
-    (('bbbbb',), 1),
-    (('pwwkew',), 3),
+    (("abcabcbb",), 3),
+    (("bbbbb",), 1),
+    (("pwwkew",), 3),
 ]
 
 if __name__ == "__main__":

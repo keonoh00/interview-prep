@@ -26,9 +26,18 @@ Tags: array, hash-table, prefix-sum"""
 
 from typing import List
 
+
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        raise NotImplementedError
+        total_counts = {0: 1}
+        total = 0
+        count = 0
+        for num in nums:
+            total += num
+            count += total_counts.get(total - k, 0)
+            total_counts[total] = total_counts.get(total, 0) + 1
+        return count
+
 
 CASES = [
     (([1, 1, 1], 2), 2),

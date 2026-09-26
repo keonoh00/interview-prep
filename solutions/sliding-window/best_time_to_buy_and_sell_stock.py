@@ -32,9 +32,17 @@ Constraints:
 
 Tags: array, dynamic-programming"""
 
+
 class Solution:
     def maxProfit(self, prices: list[int]) -> int:
-        raise NotImplementedError
+        buy_price = prices[0]
+        max_profit = 0
+        for sell_price in prices:
+            buy_price = min(buy_price, sell_price)
+            profit = sell_price - buy_price
+            max_profit = max(max_profit, profit)
+        return max_profit
+
 
 CASES = [
     (([7, 1, 5, 3, 6, 4],), 5),

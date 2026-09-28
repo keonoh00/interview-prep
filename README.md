@@ -19,25 +19,6 @@ says so briefly, with its time and space complexity, and you move on. If it miss
 what the question is teaching, or has waste an interviewer would call out, Claude
 stops you and says what to fix.
 
-## The header
-
-Each file records its own result on the fourth line:
-
-```python
-# Contains Duplicate — Easy (#217)
-# https://leetcode.com/problems/contains-duplicate/
-# Day 1 · Tue 22 Sep
-# not yet attempted       ->   2026-09-22 | 18 min | unaided: yes | CLEAR
-```
-
-`STAR` instead of `CLEAR` if it took more than 25 minutes unaided, or the approach
-was not optimal.
-
-```bash
-grep -rl 'not yet attempted' solutions/   # what is left
-grep -rl '| STAR' solutions/              # what to redo
-```
-
 ## Time and space complexity
 
 Complexity describes how the cost of your code grows as the input grows. **Time** is

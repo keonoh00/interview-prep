@@ -31,12 +31,22 @@ approach, but be strict about two things:
    near the bottom, so a low "beats X%" is worth a look, though it's noisy.
 
 If both hold, send a short ping and let them move on. If either fails, stop them
-before they move on: say what to fix, most important first, and give a hint rather
-than rewritten code.
+before they move on. In one short list, most important first, quote each piece of
+code that's wrong, give its exact change, and say why in one plain sentence. Say
+what's already right too, so they know what to leave alone. Don't rewrite the whole
+solution, and don't circle with hints or analogies. Before sending the list, apply
+it to a scratch copy and run it, so you know the next round is the last.
 
-Give the review in chat, not in the file. The user is new to time and space
-complexity, so say what n stands for and explain the "why" in plain words. Time
-their version against faster ones only when they ask why it's slow.
+Exact changes count as a big hint, so check understanding before you pass it. Ask
+two or three short questions, each with one concrete answer such as a list or a
+number. Each one restates the input and quotes the code that runs. Open "why"
+questions, and sentences with several blanks, have both confused the user.
+
+Give the review in chat, not in the file. Quote code rather than giving line
+numbers, because the user reads the chat without the file open beside it. The user
+is new to time and space complexity, so say what n stands for and explain the "why"
+in plain words. Time their version against faster ones only when they ask why it's
+slow.
 
 ## Review template
 
@@ -54,8 +64,16 @@ When it fails either one:
 **<Problem name>: not yet.** <one line on what's wrong>
 
 - **What the question is teaching:** <the main idea; only when they missed it>
-- **What to fix:** <each issue in plain words, most important first>
-- **Hint:** <a nudge toward the fix, not the answer>
+- **What to fix:** <quoted code → exact change, one line on why; most important first>
+- **Already right:** <what to leave alone>
+```
+
+When the fixes are in but it needed a big hint, before passing:
+
+```markdown
+**<Problem name>: the code is done.** Before I commit it, for <the input>:
+
+1. <What runs and why, quoting the code>. What is <one concrete thing>? (Write it like <format>.)
 ```
 
 ## Committing

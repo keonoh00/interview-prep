@@ -1,7 +1,7 @@
 """Local test harness for the example cases. Not part of any solution.
 
 Each file under solutions/ calls run(...) from its __main__ block, so that
-`python3 solutions/<topic>/<problem>.py` checks your code against LeetCode's
+`uv run solutions/<topic>/<problem>.py` checks your code against LeetCode's
 own worked examples. Nothing here is needed to solve anything.
 """
 from collections import deque

@@ -27,9 +27,24 @@ Constraints:
 
 Tags: array, stack, monotonic-stack"""
 
+
 class Solution:
     def dailyTemperatures(self, temperatures: list[int]) -> list[int]:
-        raise NotImplementedError
+        output = [0] * len(temperatures)
+        temps_to_wait = []
+        for idx, temp in enumerate(temperatures):
+            while len(temps_to_wait) > 0:
+                wait = temps_to_wait[-1]
+                if wait[0] < temp:
+                    output[wait[1]] = idx - wait[1]
+                    temps_to_wait.pop()
+                else:
+                    break
+
+            temps_to_wait.append((temp, idx))
+
+        return output
+
 
 CASES = [
     (([73, 74, 75, 71, 69, 72, 76, 73],), [1, 1, 4, 2, 1, 1, 0, 0]),

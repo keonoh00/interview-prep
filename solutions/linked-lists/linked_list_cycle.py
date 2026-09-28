@@ -49,9 +49,18 @@ from __future__ import annotations
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def hasCycle(self, head: ListNode | None) -> bool:
-        raise NotImplementedError
+        check_hashtable = set()
+        while head:
+            if head in check_hashtable:
+                return True
+
+            check_hashtable.add(head)
+            head = head.next
+        return False
+
 
 CASES = [
     (([3, 2, 0, -4], 1), True),
@@ -61,6 +70,6 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import run, ListNode, build_linked_list
+    from interview_prep import ListNode, build_linked_list, run
 
     run(lambda vals, pos: Solution().hasCycle(build_linked_list(vals, pos)), CASES)

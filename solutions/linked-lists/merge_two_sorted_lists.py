@@ -31,14 +31,38 @@ Tags: linked-list, recursion"""
 
 from __future__ import annotations
 
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeTwoLists(self, list1: ListNode | None, list2: ListNode | None) -> ListNode | None:
-        raise NotImplementedError
+    def mergeTwoLists(
+        self, list1: ListNode | None, list2: ListNode | None
+    ) -> ListNode | None:
+        output = ListNode()
+        head = output
+
+        while list1 or list2:
+            if list1 and list2:
+                if list1.val < list2.val:
+                    head.next = list1
+                    list1 = list1.next
+                else:
+                    head.next = list2
+                    list2 = list2.next
+            elif not list2:
+                head.next = list1
+                break
+            else:
+                head.next = list2
+                break
+
+            head = head.next
+
+        return output.next
+
 
 CASES = [
     (([1, 2, 4], [1, 3, 4]), [1, 1, 2, 3, 4, 4]),
@@ -48,7 +72,7 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import run, ListNode, build_linked_list, linked_list_to_list
+    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
 
     def call(a, b):
         merged = Solution().mergeTwoLists(build_linked_list(a), build_linked_list(b))

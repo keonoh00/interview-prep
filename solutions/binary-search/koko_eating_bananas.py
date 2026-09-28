@@ -36,9 +36,28 @@ Constraints:
 
 Tags: array, binary-search"""
 
+import math
+
+
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
-        raise NotImplementedError
+        eatingSpeed = max(piles)
+        sumPiles = sum(piles)
+        slowestPossibleSpeed = math.ceil(sumPiles / h)
+
+        while slowestPossibleSpeed < eatingSpeed:
+            midSpeed = (slowestPossibleSpeed - eatingSpeed) // 2 + eatingSpeed
+            totalHour = 0
+            for pile in piles:
+                hourTakePerPile = math.ceil(pile / midSpeed)
+                totalHour += hourTakePerPile
+            if totalHour <= h:
+                eatingSpeed = midSpeed
+            else:
+                slowestPossibleSpeed = midSpeed + 1
+
+        return eatingSpeed
+
 
 CASES = [
     (([3, 6, 7, 11], 8), 4),

@@ -42,9 +42,24 @@ Constraints:
 
 Tags: array, binary-search"""
 
+
 class Solution:
     def findMin(self, nums: list[int]) -> int:
-        raise NotImplementedError
+        left, right = 0, len(nums) - 1
+        while left < right:
+            half_length = (right - left) // 2
+            mid = left + half_length
+
+            left_part_right_end = nums[mid]
+            right_part_right_end = nums[right]
+
+            if left_part_right_end > right_part_right_end:
+                left = mid + 1
+            else:
+                right = mid
+
+        return nums[left]
+
 
 CASES = [
     (([3, 4, 5, 1, 2],), 1),

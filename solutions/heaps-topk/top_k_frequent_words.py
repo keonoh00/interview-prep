@@ -1,7 +1,6 @@
 # Top K Frequent Words — Medium (#692)
 # https://leetcode.com/problems/top-k-frequent-words/
 # Day 8 · Tue 29 Sep
-# not yet attempted
 
 r"""
 Given an array of strings words and an integer k, return the k most frequent

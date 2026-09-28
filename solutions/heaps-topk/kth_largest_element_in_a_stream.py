@@ -1,7 +1,6 @@
 # Kth Largest Element in a Stream — Easy (#703)
 # https://leetcode.com/problems/kth-largest-element-in-a-stream/
 # Day 5 · Sat 26 Sep
-# not yet attempted
 
 r"""
 You are part of a university admissions office and need to keep track of the kth

@@ -1,7 +1,6 @@
 # Linked List Cycle — Easy (#141)
 # https://leetcode.com/problems/linked-list-cycle/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 Given head, the head of a linked list, return true if the list has a cycle, or

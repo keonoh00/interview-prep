@@ -1,7 +1,6 @@
 # Climbing Stairs — Easy (#70)
 # https://leetcode.com/problems/climbing-stairs/
 # Day 8 · Tue 29 Sep
-# not yet attempted
 
 r"""
 You are climbing a staircase. It takes n steps to reach the top.

@@ -1,7 +1,6 @@
 # Validate Binary Search Tree — Medium (#98)
 # https://leetcode.com/problems/validate-binary-search-tree/
 # Day 6 · Sun 27 Sep
-# not yet attempted
 
 r"""
 Given the root of a binary tree, determine if it is a valid binary search tree

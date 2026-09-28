@@ -1,7 +1,6 @@
 # Merge Two Sorted Lists — Easy (#21)
 # https://leetcode.com/problems/merge-two-sorted-lists/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 You're given the heads of two sorted linked lists, list1 and list2.

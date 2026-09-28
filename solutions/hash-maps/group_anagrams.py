@@ -1,7 +1,6 @@
 # Group Anagrams — Medium (#49)
 # https://leetcode.com/problems/group-anagrams/
 # Day 1 · Tue 22 Sep
-# not yet attempted
 
 r"""
 Given an array of strings strs, group the anagrams together. You can return the

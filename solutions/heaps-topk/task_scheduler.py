@@ -1,7 +1,6 @@
 # Task Scheduler — Medium (#621)
 # https://leetcode.com/problems/task-scheduler/
 # Day 9 · Wed 30 Sep
-# not yet attempted
 
 r"""
 You are given an array of CPU tasks, each labeled with a letter from A to Z, and a

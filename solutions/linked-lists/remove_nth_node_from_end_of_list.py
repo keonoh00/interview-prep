@@ -1,7 +1,6 @@
 # Remove Nth Node From End of List — Medium (#19)
 # https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 Given the head of a linked list, remove the nth node counting from the end of the

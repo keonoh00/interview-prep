@@ -1,7 +1,6 @@
 # Find Minimum in Rotated Sorted Array — Medium (#153)
 # https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 # Day 4 · Fri 25 Sep
-# not yet attempted
 
 r"""
 Suppose an array of length n sorted in ascending order is rotated between 1 and n

@@ -1,7 +1,6 @@
 # Max Area of Island — Medium (#695)
 # https://leetcode.com/problems/max-area-of-island/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 You are given an m x n binary matrix grid. An island is a group of 1's (representing

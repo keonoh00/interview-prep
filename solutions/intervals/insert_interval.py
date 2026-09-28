@@ -1,7 +1,6 @@
 # Insert Interval — Medium (#57)
 # https://leetcode.com/problems/insert-interval/
 # Day 5 · Sat 26 Sep
-# not yet attempted
 
 r"""
 You are given an array of non-overlapping intervals intervals where intervals[i] =

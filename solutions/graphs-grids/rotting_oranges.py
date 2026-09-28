@@ -1,7 +1,6 @@
 # Rotting Oranges — Medium (#994)
 # https://leetcode.com/problems/rotting-oranges/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 You are given an m x n grid where each cell can have one of three values:

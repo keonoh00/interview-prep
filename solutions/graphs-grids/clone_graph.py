@@ -1,7 +1,6 @@
 # Clone Graph — Medium (#133)
 # https://leetcode.com/problems/clone-graph/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 Given a reference of a node in a connected undirected graph.

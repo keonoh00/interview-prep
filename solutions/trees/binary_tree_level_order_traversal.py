@@ -1,7 +1,6 @@
 # Binary Tree Level Order Traversal — Medium (#102)
 # https://leetcode.com/problems/binary-tree-level-order-traversal/
 # Day 6 · Sun 27 Sep
-# not yet attempted
 
 r"""
 Given the root of a binary tree, return the level order traversal of its nodes'

@@ -1,7 +1,6 @@
 # Maximum Depth of Binary Tree — Easy (#104)
 # https://leetcode.com/problems/maximum-depth-of-binary-tree/
 # Day 6 · Sun 27 Sep
-# not yet attempted
 
 r"""
 Given the root of a binary tree, return its maximum depth.

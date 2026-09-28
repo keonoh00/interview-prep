@@ -1,7 +1,6 @@
 # Sort Colors — Medium (#75)
 # https://leetcode.com/problems/sort-colors/
 # Day 4 · Fri 25 Sep
-# not yet attempted
 
 r"""
 You are given an array nums with n objects colored red, white, or blue, sort them

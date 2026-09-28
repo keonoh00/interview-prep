@@ -1,7 +1,6 @@
 # Search a 2D Matrix — Medium (#74)
 # https://leetcode.com/problems/search-a-2d-matrix/
 # Day 4 · Fri 25 Sep
-# not yet attempted
 
 r"""
 You are given an m x n integer matrix matrix with the following two properties:

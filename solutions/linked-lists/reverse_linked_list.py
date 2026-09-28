@@ -1,7 +1,6 @@
 # Reverse Linked List — Easy (#206)
 # https://leetcode.com/problems/reverse-linked-list/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 Given the head of a singly linked list, reverse the list and return the head of

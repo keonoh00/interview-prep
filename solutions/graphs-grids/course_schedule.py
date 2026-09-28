@@ -1,7 +1,6 @@
 # Course Schedule — Medium (#207)
 # https://leetcode.com/problems/course-schedule/
 # Day 7 · Mon 28 Sep
-# not yet attempted
 
 r"""
 There are a total of numCourses courses you have to take, labeled from 0 to

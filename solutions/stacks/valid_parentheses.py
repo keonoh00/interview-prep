@@ -1,7 +1,6 @@
 # Valid Parentheses — Easy (#20)
 # https://leetcode.com/problems/valid-parentheses/
 # Day 3 · Thu 24 Sep
-# not yet attempted
 
 r"""
 Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',

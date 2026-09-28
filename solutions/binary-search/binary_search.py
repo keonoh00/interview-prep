@@ -1,7 +1,6 @@
 # Binary Search — Easy (#704)
 # https://leetcode.com/problems/binary-search/
 # Day 4 · Fri 25 Sep
-# not yet attempted
 
 r"""
 Given an array of integers nums which is sorted in ascending order, and an integer

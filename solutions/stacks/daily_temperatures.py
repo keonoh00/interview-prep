@@ -1,7 +1,6 @@
 # Daily Temperatures — Medium (#739)
 # https://leetcode.com/problems/daily-temperatures/
 # Day 3 · Thu 24 Sep
-# not yet attempted
 
 r"""
 Given an array of integers temperatures represents the daily temperatures, return an

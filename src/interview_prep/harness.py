@@ -89,12 +89,14 @@ def graph_to_adj(node):
     return [[n.val for n in seen[k].neighbors] for k in sorted(seen)]
 
 
-def build_linked_list(vals):
-    """LeetCode list -> ListNode chain."""
-    head = None
-    for v in reversed(vals):
-        head = ListNode(v, head)
-    return head
+def build_linked_list(vals, pos=-1):
+    """LeetCode list -> ListNode chain, tail linked back to index pos if pos >= 0."""
+    nodes = [ListNode(v) for v in vals]
+    for a, b in zip(nodes, nodes[1:]):
+        a.next = b
+    if pos >= 0:
+        nodes[-1].next = nodes[pos]
+    return nodes[0] if nodes else None
 
 
 def linked_list_to_list(head):

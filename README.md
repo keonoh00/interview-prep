@@ -1,6 +1,6 @@
 # interview-prep
 
-44 problems for a live DS&A screen on **Friday 2 October 2026**. Each file under
+45 problems for a live DS&A screen on **Friday 2 October 2026**. Each file under
 `solutions/` holds the LeetCode description, the stub, and the worked examples as
 runnable tests.
 

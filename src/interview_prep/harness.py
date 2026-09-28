@@ -19,6 +19,11 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 
 
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val, self.next = val, next
+
+
 def build_tree(vals):
     """LeetCode level-order list (with nulls) -> TreeNode."""
     if not vals or vals[0] is None:
@@ -82,6 +87,25 @@ def graph_to_adj(node):
             if n.val not in seen:
                 seen[n.val] = n; q.append(n)
     return [[n.val for n in seen[k].neighbors] for k in sorted(seen)]
+
+
+def build_linked_list(vals):
+    """LeetCode list -> ListNode chain."""
+    head = None
+    for v in reversed(vals):
+        head = ListNode(v, head)
+    return head
+
+
+def linked_list_to_list(head):
+    """ListNode chain -> list; raises instead of hanging if the chain loops."""
+    out, seen = [], set()
+    while head:
+        if head in seen:
+            raise ValueError("found a cycle in the linked list")
+        seen.add(head); out.append(head.val)
+        head = head.next
+    return out
 
 
 def _norm(x, any_order):

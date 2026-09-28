@@ -32,9 +32,42 @@ Constraints:
 
 Tags: array, binary-search, matrix"""
 
+
 class Solution:
     def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:
-        raise NotImplementedError
+        smaller_row_idx = 0
+        larger_row_idx = len(matrix) - 1
+        row_candiate = None
+        while smaller_row_idx < larger_row_idx:
+            gap = (larger_row_idx - smaller_row_idx) // 2
+            mid_row_idx = smaller_row_idx + gap
+            mid_row = matrix[mid_row_idx]
+            if mid_row[0] <= target and mid_row[-1] >= target:
+                row_candiate = mid_row
+                break
+            elif mid_row[0] > target:
+                larger_row_idx = mid_row_idx
+            elif mid_row[-1] < target:
+                smaller_row_idx = mid_row_idx + 1
+
+        if not row_candiate:
+            row_candiate = matrix[smaller_row_idx]
+        smaller_column_idx = 0
+        larger_column_idx = len(row_candiate)
+
+        while smaller_column_idx < larger_column_idx:
+            gap = (larger_column_idx - smaller_column_idx) // 2
+            mid_col_idx = smaller_column_idx + gap
+            mid_num = row_candiate[mid_col_idx]
+            if mid_num >= target:
+                larger_column_idx = mid_col_idx
+            else:
+                smaller_column_idx = mid_col_idx + 1
+
+        if smaller_column_idx < len(row_candiate):
+            return row_candiate[smaller_column_idx] == target
+        return False
+
 
 CASES = [
     (([[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]], 3), True),

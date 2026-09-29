@@ -25,9 +25,18 @@ Constraints:
 
 Tags: array, divide-and-conquer, sorting, heap-priority-queue, quickselect"""
 
+
 class Solution:
     def findKthLargest(self, nums: list[int], k: int) -> int:
-        raise NotImplementedError
+        import heapq
+
+        nums = [n * -1 for n in nums]
+
+        heapq.heapify(nums)
+        for _ in range(k - 1):
+            heapq.heappop(nums)
+        return heapq.heappop(nums) * -1
+
 
 CASES = [
     (([3, 2, 1, 5, 6, 4], 2), 5),

@@ -38,19 +38,68 @@ Tags: array, depth-first-search, breadth-first-search, union-find, matrix"""
 
 from typing import List
 
+
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
-        raise NotImplementedError
+
+        lands = set()
+        for _y in range(len(grid)):
+            for _x in range(len(grid[0])):
+                if grid[_y][_x] == "1":
+                    lands.add((_x, _y))
+
+        seen = set()
+        xHigh = len(grid[0])
+        yHigh = len(grid)
+
+        def dfs(location):
+            positionX, positionY = location
+            up = (positionX, positionY - 1)
+            down = (positionX, positionY + 1)
+            left = (positionX - 1, positionY)
+            right = (positionX + 1, positionY)
+            for adj in [up, down, left, right]:
+                _x, _y = adj
+                if adj in seen:
+                    continue
+                if not (0 <= _x < xHigh and 0 <= _y < yHigh):
+                    continue
+                if grid[_y][_x] == "1":
+                    seen.add(adj)
+                    dfs(adj)
+
+        num_island = 0
+        for land in lands:
+            if land in seen:
+                continue
+            seen.add(land)
+            dfs(land)
+            num_island += 1
+
+        return num_island
+
 
 CASES = [
     (
-        ([['1', '1', '1', '1', '0'], ['1', '1', '0', '1', '0'], ['1', '1', '0',
-         '0', '0'], ['0', '0', '0', '0', '0']],),
+        (
+            [
+                ["1", "1", "1", "1", "0"],
+                ["1", "1", "0", "1", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "0", "0", "0"],
+            ],
+        ),
         1,
     ),
     (
-        ([['1', '1', '0', '0', '0'], ['1', '1', '0', '0', '0'], ['0', '0', '1',
-         '0', '0'], ['0', '0', '0', '1', '1']],),
+        (
+            [
+                ["1", "1", "0", "0", "0"],
+                ["1", "1", "0", "0", "0"],
+                ["0", "0", "1", "0", "0"],
+                ["0", "0", "0", "1", "1"],
+            ],
+        ),
         3,
     ),
 ]

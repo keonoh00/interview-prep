@@ -11,3 +11,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/interview_prep"]
+
+[tool.pyright]
+# LeetCode's ListNode/TreeNode stubs are untyped, so pointer walks like
+# `slow.next.next` look like attribute access on None. LeetCode does not
+# type-check, and asserts to appease the checker would be interview noise.
+reportOptionalMemberAccess = "none"

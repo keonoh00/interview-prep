@@ -31,6 +31,7 @@ Tags: linked-list, recursion"""
 
 from __future__ import annotations
 
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -38,7 +39,22 @@ from __future__ import annotations
 #         self.next = next
 class Solution:
     def reverseList(self, head: ListNode | None) -> ListNode | None:
-        raise NotImplementedError
+        container = ListNode()
+        pointer = container
+
+        def getDeepNode(node: ListNode):
+            nonlocal pointer
+            if node.next:
+                getDeepNode(node.next)
+            pointer.next = node
+            pointer = pointer.next
+
+        if head:
+            getDeepNode(head)
+            pointer.next = None
+
+        return container.next
+
 
 CASES = [
     (([1, 2, 3, 4, 5],), [5, 4, 3, 2, 1]),
@@ -48,6 +64,9 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import run, ListNode, build_linked_list, linked_list_to_list
+    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
 
-    run(lambda h: linked_list_to_list(Solution().reverseList(build_linked_list(h))), CASES)
+    run(
+        lambda h: linked_list_to_list(Solution().reverseList(build_linked_list(h))),
+        CASES,
+    )

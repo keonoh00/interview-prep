@@ -27,6 +27,7 @@ Tags: tree, breadth-first-search, binary-tree"""
 
 from __future__ import annotations
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -35,7 +36,29 @@ from __future__ import annotations
 #         self.right = right
 class Solution:
     def levelOrder(self, root: TreeNode | None) -> list[list[int]]:
-        raise NotImplementedError
+        from collections import deque
+
+        container = []
+
+        q: deque[TreeNode] = deque()
+        if not root:
+            return container
+
+        q.append(root)
+
+        while q:
+            row = []
+            for _ in range(len(q)):
+                node = q.popleft()
+                row.append(node.val)
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+            container.append(row)
+
+        return container
+
 
 CASES = [
     (([3, 9, 20, None, None, 15, 7],), [[3], [9, 20], [15, 7]]),

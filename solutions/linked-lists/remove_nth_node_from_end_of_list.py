@@ -31,6 +31,7 @@ Tags: linked-list, two-pointers"""
 
 from __future__ import annotations
 
+
 # Definition for singly-linked list.
 # class ListNode:
 #     def __init__(self, val=0, next=None):
@@ -38,7 +39,20 @@ from __future__ import annotations
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: ListNode | None, n: int) -> ListNode | None:
-        raise NotImplementedError
+        output = ListNode()
+        output.next = head
+        fast = slow = output
+        for _ in range(n):
+            fast = fast.next
+
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+
+        slow.next = slow.next.next
+
+        return output.next
+
 
 CASES = [
     (([1, 2, 3, 4, 5], 2), [1, 2, 3, 5]),
@@ -48,7 +62,7 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import run, ListNode, build_linked_list, linked_list_to_list
+    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
 
     def call(vals, n):
         head = Solution().removeNthFromEnd(build_linked_list(vals), n)

@@ -40,9 +40,48 @@ Constraints:
 
 Tags: array, breadth-first-search, matrix"""
 
+
 class Solution:
     def orangesRotting(self, grid: list[list[int]]) -> int:
-        raise NotImplementedError
+        from collections import deque
+
+        xHigh = len(grid[0])
+        yHigh = len(grid)
+
+        rotten_oranges = deque()
+        fresh_oranges = 0
+        for _y in range(0, yHigh):
+            for _x in range(0, xHigh):
+                freshness = grid[_y][_x]
+                if freshness == 1:
+                    fresh_oranges += 1
+                elif freshness == 2:
+                    rotten_oranges.append([_x, _y])
+
+        minutes = 0
+        while rotten_oranges and fresh_oranges:
+            for _ in range(len(rotten_oranges)):
+                position = rotten_oranges.popleft()
+                positionX, positionY = position
+
+                up = [positionX, positionY - 1]
+                down = [positionX, positionY + 1]
+                left = [positionX - 1, positionY]
+                right = [positionX + 1, positionY]
+
+                for dir in [up, down, left, right]:
+                    _x, _y = dir
+                    if 0 <= _x < xHigh and 0 <= _y < yHigh:
+                        freshness = grid[_y][_x]
+                        if freshness == 1:
+                            grid[_y][_x] = 2
+                            rotten_oranges.append([_x, _y])
+                            fresh_oranges -= 1
+
+            minutes += 1
+
+        return -1 if fresh_oranges else minutes
+
 
 CASES = [
     (([[2, 1, 1], [1, 1, 0], [0, 1, 1]],), 4),

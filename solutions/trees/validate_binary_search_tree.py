@@ -33,6 +33,7 @@ Tags: tree, depth-first-search, binary-search-tree, binary-tree"""
 
 from __future__ import annotations
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -41,7 +42,25 @@ from __future__ import annotations
 #         self.right = right
 class Solution:
     def isValidBST(self, root: TreeNode | None) -> bool:
-        raise NotImplementedError
+        from collections import deque
+
+        q: deque[tuple[TreeNode, float, float]] = deque()
+        if not root:
+            return False
+        q.append((root, float("-inf"), float("inf")))
+        while q:
+            node, low, high = q.popleft()
+
+            if not low < node.val < high:
+                return False
+
+            if node.left:
+                q.append((node.left, low, node.val))
+            if node.right:
+                q.append((node.right, node.val, high))
+
+        return True
+
 
 CASES = [
     (([2, 1, 3],), True),

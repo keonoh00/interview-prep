@@ -49,6 +49,6 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import run, build_tree
+    from interview_prep import TreeNode, build_tree, run
 
     run(lambda r: Solution().isValidBST(build_tree(r)), CASES)

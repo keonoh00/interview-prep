@@ -59,7 +59,7 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import run, build_tree, find_node
+    from interview_prep import TreeNode, build_tree, find_node, run
 
     def call(vals, p, q):
         root = build_tree(vals)

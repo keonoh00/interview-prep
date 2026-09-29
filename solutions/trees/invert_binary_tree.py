@@ -27,6 +27,7 @@ Tags: tree, depth-first-search, breadth-first-search, binary-tree"""
 
 from __future__ import annotations
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -35,7 +36,19 @@ from __future__ import annotations
 #         self.right = right
 class Solution:
     def invertTree(self, root: TreeNode | None) -> TreeNode | None:
-        raise NotImplementedError
+        def dfs(node: TreeNode | None):
+            if not node:
+                return
+
+            node.left, node.right = node.right, node.left
+
+            dfs(node.left)
+            dfs(node.right)
+
+        dfs(root)
+
+        return root
+
 
 CASES = [
     (([4, 2, 7, 1, 3, 6, 9],), [4, 7, 2, 9, 6, 3, 1]),

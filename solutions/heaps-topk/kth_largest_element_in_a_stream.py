@@ -53,15 +53,22 @@ Constraints:
 Tags: tree, design, binary-search-tree, heap-priority-queue, binary-tree, data-
       stream"""
 
+import heapq
+
+
 class KthLargest:
-
     def __init__(self, k: int, nums: list[int]):
-        raise NotImplementedError
-
+        self.k = k
+        self.heap = nums
+        heapq.heapify(self.heap)
+        while len(self.heap) > k:
+            heapq.heappop(self.heap)
 
     def add(self, val: int) -> int:
-        raise NotImplementedError
-
+        heapq.heappush(self.heap, val)
+        if len(self.heap) > self.k:
+            heapq.heappop(self.heap)
+        return self.heap[0]
 
 
 # Your KthLargest object will be instantiated and called as such:
@@ -70,13 +77,17 @@ class KthLargest:
 
 CASES = [
     (
-        (['KthLargest', 'add', 'add', 'add', 'add', 'add'],
-         [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]]),
+        (
+            ["KthLargest", "add", "add", "add", "add", "add"],
+            [[3, [4, 5, 8, 2]], [3], [5], [10], [9], [4]],
+        ),
         [None, 4, 5, 5, 8, 8],
     ),
     (
-        (['KthLargest', 'add', 'add', 'add', 'add'],
-         [[4, [7, 7, 7, 7, 8, 3]], [2], [10], [9], [9]]),
+        (
+            ["KthLargest", "add", "add", "add", "add"],
+            [[4, [7, 7, 7, 7, 8, 3]], [2], [10], [9], [9]],
+        ),
         [None, 7, 7, 7, 8],
     ),
 ]

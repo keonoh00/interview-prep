@@ -34,9 +34,26 @@ Constraints:
 Tags: array, math, divide-and-conquer, geometry, sorting, heap-priority-queue,
       quickselect, k-d-tree"""
 
+
 class Solution:
     def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
-        raise NotImplementedError
+
+        import heapq
+
+        distance_position_heap = []
+
+        for pt in points:
+            distance = pt[0] ** 2 + pt[1] ** 2
+            heapq.heappush(distance_position_heap, (distance, pt))
+
+        result = []
+
+        for _ in range(k):
+            min_val = heapq.heappop(distance_position_heap)
+            result.append(min_val[1])
+
+        return result
+
 
 CASES = [
     (([[1, 3], [-2, 2]], 1), [[-2, 2]]),

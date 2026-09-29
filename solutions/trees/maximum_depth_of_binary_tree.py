@@ -25,6 +25,7 @@ Tags: tree, depth-first-search, breadth-first-search, binary-tree"""
 
 from __future__ import annotations
 
+
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -33,7 +34,21 @@ from __future__ import annotations
 #         self.right = right
 class Solution:
     def maxDepth(self, root: TreeNode | None) -> int:
-        raise NotImplementedError
+
+        max_depth = 0
+
+        def getDeep(node: TreeNode | None, depth):
+            if not node:
+                return
+            nonlocal max_depth
+
+            max_depth = max(max_depth, depth)
+            getDeep(node.left, depth + 1)
+            getDeep(node.right, depth + 1)
+
+        getDeep(root, 1)
+        return max_depth
+
 
 CASES = [
     (([3, 9, 20, None, None, 15, 7],), 3),

@@ -31,9 +31,20 @@ Constraints:
 
 Tags: array, dynamic-programming"""
 
+
 class Solution:
     def rob(self, nums: list[int]) -> int:
-        raise NotImplementedError
+        if len(nums) == 1:
+            return nums[0]
+        best_robs = [nums[0], max(nums[0], nums[1])]
+
+        for idx in range(2, len(nums)):
+            money = nums[idx]
+            best_robs_so_far = max(best_robs[idx - 1], money + best_robs[idx - 2])
+            best_robs.append(best_robs_so_far)
+
+        return best_robs[-1]
+
 
 CASES = [
     (([1, 2, 3, 1],), 4),

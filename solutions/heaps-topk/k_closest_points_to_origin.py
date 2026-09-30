@@ -1,6 +1,5 @@
 # K Closest Points to Origin — Medium (#973)
 # https://leetcode.com/problems/k-closest-points-to-origin/
-# Day 5 · Sat 26 Sep
 
 r"""
 Given an array of points where points[i] = [x_i, y_i] represents a point on the X-Y

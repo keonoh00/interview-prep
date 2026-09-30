@@ -1,6 +1,5 @@
 # Container With Most Water — Medium (#11)
 # https://leetcode.com/problems/container-with-most-water/
-# Day 2 · Wed 23 Sep
 
 r"""
 You are given an integer array height of length n. There are n vertical lines drawn

@@ -1,6 +1,5 @@
 # Kth Largest Element in an Array — Medium (#215)
 # https://leetcode.com/problems/kth-largest-element-in-an-array/
-# Day 5 · Sat 26 Sep
 
 r"""
 Given an integer array nums and an integer k, return the k^th largest element in the

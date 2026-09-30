@@ -1,6 +1,5 @@
 # Non-overlapping Intervals — Medium (#435)
 # https://leetcode.com/problems/non-overlapping-intervals/
-# Day 10 · Thu 1 Oct
 
 r"""
 Given an array of intervals intervals where intervals[i] = [start_i, end_i], return

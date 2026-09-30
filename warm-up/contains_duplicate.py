@@ -1,6 +1,5 @@
 # Contains Duplicate — Easy (#217)
 # https://leetcode.com/problems/contains-duplicate/
-# Day 1 · Tue 22 Sep
 
 r"""
 Given an integer array nums, return true if any value appears at least twice in the

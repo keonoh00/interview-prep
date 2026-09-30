@@ -1,6 +1,5 @@
 # Longest Consecutive Sequence — Medium (#128)
 # https://leetcode.com/problems/longest-consecutive-sequence/
-# Day 9 · Wed 30 Sep
 
 r"""
 Given an unsorted array of integers nums, return the length of the longest

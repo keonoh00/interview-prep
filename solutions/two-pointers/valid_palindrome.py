@@ -1,6 +1,5 @@
 # Valid Palindrome — Easy (#125)
 # https://leetcode.com/problems/valid-palindrome/
-# Day 2 · Wed 23 Sep
 
 r"""
 A phrase is a palindrome if, after converting all uppercase letters into lowercase

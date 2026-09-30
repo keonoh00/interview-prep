@@ -1,6 +1,5 @@
 # Find All Anagrams in a String — Medium (#438)
 # https://leetcode.com/problems/find-all-anagrams-in-a-string/
-# Day 10 · Thu 1 Oct
 
 r"""
 Given two strings s and p, return an array of all the start indices of p's anagrams

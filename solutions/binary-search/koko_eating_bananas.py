@@ -1,6 +1,5 @@
 # Koko Eating Bananas — Medium (#875)
 # https://leetcode.com/problems/koko-eating-bananas/
-# Day 4 · Fri 25 Sep
 
 r"""
 Koko loves to eat bananas. There are n piles of bananas, the i^th pile has piles[i]

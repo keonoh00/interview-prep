@@ -1,6 +1,5 @@
 # Longest Repeating Character Replacement — Medium (#424)
 # https://leetcode.com/problems/longest-repeating-character-replacement/
-# Day 3 · Thu 24 Sep
 
 r"""
 You are given a string s and an integer k. You can choose any character of the

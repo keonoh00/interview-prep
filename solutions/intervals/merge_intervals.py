@@ -1,6 +1,5 @@
 # Merge Intervals — Medium (#56)
 # https://leetcode.com/problems/merge-intervals/
-# Day 5 · Sat 26 Sep
 
 r"""
 Given an array of intervals where intervals[i] = [start_i, end_i], merge all

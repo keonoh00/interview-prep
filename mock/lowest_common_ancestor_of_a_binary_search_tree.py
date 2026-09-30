@@ -1,6 +1,5 @@
 # Lowest Common Ancestor of a Binary Search Tree — Medium (#235)
 # https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
-# Day 6 · Sun 27 Sep
 
 r"""
 Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two

@@ -1,6 +1,5 @@
 # Number of Islands — Medium (#200)
 # https://leetcode.com/problems/number-of-islands/
-# Day 7 · Mon 28 Sep
 
 r"""
 Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's

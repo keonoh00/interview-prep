@@ -1,6 +1,5 @@
 # House Robber — Medium (#198)
 # https://leetcode.com/problems/house-robber/
-# Day 8 · Tue 29 Sep
 
 r"""
 You are a professional robber planning to rob houses along a street. Each house has

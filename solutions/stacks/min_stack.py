@@ -1,6 +1,5 @@
 # Min Stack — Medium (#155)
 # https://leetcode.com/problems/min-stack/
-# Day 3 · Thu 24 Sep
 
 r"""
 Build a stack that can also tell you its smallest element, with every operation

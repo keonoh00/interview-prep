@@ -1,6 +1,5 @@
 # Valid Anagram — Easy (#242)
 # https://leetcode.com/problems/valid-anagram/
-# Day 1 · Tue 22 Sep
 
 r"""
 Given two strings s and t, return true if t is an anagram of s, and false otherwise.

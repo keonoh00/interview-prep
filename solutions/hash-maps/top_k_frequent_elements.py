@@ -1,6 +1,5 @@
 # Top K Frequent Elements — Medium (#347)
 # https://leetcode.com/problems/top-k-frequent-elements/
-# Day 1 · Tue 22 Sep
 # not yet attempted
 
 r"""

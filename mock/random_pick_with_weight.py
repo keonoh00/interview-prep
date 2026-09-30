@@ -1,6 +1,5 @@
 # Random Pick with Weight — Medium (#528)
 # https://leetcode.com/problems/random-pick-with-weight/
-# Day 8 · Tue 29 Sep
 
 r"""
 You are given a 0-indexed array of positive integers w where w[i] describes the

@@ -1,6 +1,5 @@
 # LRU Cache — Medium (#146)
 # https://leetcode.com/problems/lru-cache/
-# Day 8 · Tue 29 Sep
 
 r"""
 Design a data structure that follows the constraints of a Least Recently Used (LRU)

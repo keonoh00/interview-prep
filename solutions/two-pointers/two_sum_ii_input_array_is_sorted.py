@@ -1,6 +1,5 @@
 # Two Sum II - Input Array Is Sorted — Medium (#167)
 # https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
-# Day 2 · Wed 23 Sep
 
 r"""
 You are given a 1-indexed array of integers numbers that is already sorted in non-

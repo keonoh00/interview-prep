@@ -1,6 +1,5 @@
 # Subarray Sum Equals K — Medium (#560)
 # https://leetcode.com/problems/subarray-sum-equals-k/
-# Day 1 · Tue 22 Sep
 
 r"""
 Given an array of integers nums and an integer k, return the total number of

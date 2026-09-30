@@ -1,6 +1,5 @@
 # Invert Binary Tree — Easy (#226)
 # https://leetcode.com/problems/invert-binary-tree/
-# Day 6 · Sun 27 Sep
 
 r"""
 Given the root of a binary tree, invert the tree, and return its root.

@@ -1,6 +1,5 @@
 # 3Sum — Medium (#15)
 # https://leetcode.com/problems/3sum/
-# Day 2 · Wed 23 Sep
 
 r"""
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]]

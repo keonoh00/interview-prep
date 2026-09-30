@@ -28,9 +28,19 @@ Constraints:
 
 Tags: array, sorting, quicksort"""
 
+
 class Solution:
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
-        raise NotImplementedError
+        intervals.sort()
+        merged = [intervals[0]]
+        for right in intervals[1:]:
+            left = merged[-1]
+            if left[1] >= right[0]:
+                left[1] = max(left[1], right[1])
+            else:
+                merged.append(right)
+        return merged
+
 
 CASES = [
     (([[1, 3], [2, 6], [8, 10], [15, 18]],), [[1, 6], [8, 10], [15, 18]]),

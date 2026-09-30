@@ -30,9 +30,33 @@ n is the array's size.
 Tags: array, hash-table, divide-and-conquer, sorting, heap-priority-queue, bucket-
       sort, counting, quickselect"""
 
+
 class Solution:
     def topKFrequent(self, nums: list[int], k: int) -> list[int]:
-        raise NotImplementedError
+        from collections import Counter, defaultdict
+
+        counts = Counter(nums)  # num : number of frequency
+
+        inverted_counts = defaultdict(
+            set
+        )  # number of frequency : nums with the frequency
+
+        for num, c in counts.items():
+            inverted_counts[c].add(num)
+
+        sorted_counts = sorted(
+            inverted_counts.keys(), reverse=True
+        )  # sorted iterable with counts
+
+        result = []
+
+        for c in sorted_counts:
+            result.extend(inverted_counts[c])
+            if len(result) == k:
+                return result
+
+        return result
+
 
 CASES = [
     (([1, 1, 1, 2, 2, 3], 2), [1, 2]),

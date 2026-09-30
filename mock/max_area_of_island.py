@@ -29,9 +29,7 @@ Constraints:
   - m == grid.length
   - n == grid[i].length
   - 1 <= m, n <= 50
-  - grid[i][j] is either 0 or 1.
-
-Tags: array, depth-first-search, breadth-first-search, union-find, matrix"""
+  - grid[i][j] is either 0 or 1."""
 
 class Solution:
     def maxAreaOfIsland(self, grid: list[list[int]]) -> int:

@@ -24,9 +24,7 @@ Example 3:
 
 Constraints:
   - 0 <= nums.length <= 10^5
-  - -10^9 <= nums[i] <= 10^9
-
-Tags: array, hash-table, union-find"""
+  - -10^9 <= nums[i] <= 10^9"""
 
 class Solution:
     def longestConsecutive(self, nums: list[int]) -> int:

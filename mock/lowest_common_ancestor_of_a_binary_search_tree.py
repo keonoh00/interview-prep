@@ -34,10 +34,7 @@ Constraints:
   - -10^9 <= Node.val <= 10^9
   - All Node.val are unique.
   - p != q
-  - p and q will exist in the BST.
-
-Tags: tree, depth-first-search, binary-search-tree, binary-tree, binary-lifting,
-      lowest-common-ancestor"""
+  - p and q will exist in the BST."""
 
 from __future__ import annotations
 

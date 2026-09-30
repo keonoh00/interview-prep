@@ -21,9 +21,7 @@ Example 2:
 
 Constraints:
   - 1 <= s.length, p.length <= 3 * 10^4
-  - s and p consist of lowercase English letters.
-
-Tags: hash-table, string, sliding-window"""
+  - s and p consist of lowercase English letters."""
 
 class Solution:
     def findAnagrams(self, s: str, p: str) -> list[int]:

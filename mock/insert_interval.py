@@ -34,9 +34,7 @@ Constraints:
   - 0 <= start_i <= end_i <= 10^5
   - intervals is sorted by start_i in ascending order.
   - newInterval.length == 2
-  - 0 <= start <= end <= 10^5
-
-Tags: array"""
+  - 0 <= start <= end <= 10^5"""
 
 class Solution:
     def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:

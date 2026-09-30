@@ -30,10 +30,7 @@ Constraints:
   - 0 <= prerequisites.length <= 5000
   - prerequisites[i].length == 2
   - 0 <= a_i, b_i < numCourses
-  - All the pairs prerequisites[i] are unique.
-
-Tags: depth-first-search, breadth-first-search, graph, topological-sort, directed-
-      acyclic-graph"""
+  - All the pairs prerequisites[i] are unique."""
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:

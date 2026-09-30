@@ -25,9 +25,7 @@ Example 2:
 Constraints:
   - 1 <= s.length <= 10^5
   - s consists of only uppercase English letters.
-  - 0 <= k <= s.length
-
-Tags: hash-table, string, sliding-window"""
+  - 0 <= k <= s.length"""
 
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:

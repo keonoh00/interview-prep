@@ -35,9 +35,7 @@ Example 3:
 Constraints:
   - 1 <= tasks.length <= 10^4
   - tasks[i] is an uppercase English letter.
-  - 0 <= n <= 100
-
-Tags: array, hash-table, greedy, sorting, heap-priority-queue, counting"""
+  - 0 <= n <= 100"""
 
 class Solution:
     def leastInterval(self, tasks: list[str], n: int) -> int:

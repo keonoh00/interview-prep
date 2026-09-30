@@ -28,10 +28,7 @@ Constraints:
   - words[i] consists of lowercase English letters.
   - k is in the range [1, The number of unique words[i]]
 
-Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?
-
-Tags: array, hash-table, string, trie, sorting, heap-priority-queue, bucket-sort,
-      counting"""
+Follow-up: Could you solve it in O(n log(k)) time and O(n) extra space?"""
 
 class Solution:
     def topKFrequent(self, words: list[str], k: int) -> list[str]:

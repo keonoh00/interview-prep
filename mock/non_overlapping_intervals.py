@@ -31,9 +31,7 @@ Example 3:
 Constraints:
   - 1 <= intervals.length <= 10^5
   - intervals[i].length == 2
-  - -5 * 10^4 <= start_i < end_i <= 5 * 10^4
-
-Tags: array, dynamic-programming, greedy, sorting"""
+  - -5 * 10^4 <= start_i < end_i <= 5 * 10^4"""
 
 class Solution:
     def eraseOverlapIntervals(self, intervals: list[list[int]]) -> int:

@@ -39,9 +39,7 @@ Constraints:
   - 1 <= capacity <= 3000
   - 0 <= key <= 10^4
   - 0 <= value <= 10^5
-  - At most 2 * 10^5 calls will be made to get and put.
-
-Tags: hash-table, linked-list, design, doubly-linked-list"""
+  - At most 2 * 10^5 calls will be made to get and put."""
 
 class LRUCache:
 

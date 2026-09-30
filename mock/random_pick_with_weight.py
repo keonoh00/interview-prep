@@ -53,9 +53,7 @@ Example 2:
 Constraints:
   - 1 <= w.length <= 10^4
   - 1 <= w[i] <= 10^5
-  - pickIndex will be called at most 10^4 times.
-
-Tags: array, math, binary-search, prefix-sum, randomized"""
+  - pickIndex will be called at most 10^4 times."""
 
 class Solution:
 

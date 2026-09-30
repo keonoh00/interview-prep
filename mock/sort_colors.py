@@ -27,9 +27,7 @@ Constraints:
   - n == nums.length
 
 1 Follow up: Could you come up with a one-pass algorithm using only constant extra
-space?
-
-Tags: array, two-pointers, sorting, quicksort, bubble-sort"""
+space?"""
 
 class Solution:
     def sortColors(self, nums: list[int]) -> None:

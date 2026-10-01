@@ -16,10 +16,14 @@ unless the user asks for it.
 ## Re-solving
 
 `re-solve/` holds problems already solved under `solutions/`, for practicing recall.
-Don't review these, but run the file and say in one line whether it's good or bad.
-Good means the examples pass and it uses the idea the question is built around, so
-one that would time out is bad. If it's bad, say which examples fail or that it's too
-slow, but don't say what to change unless asked. Answer the user's questions, but skip
+Don't review these, but test them and say in one line whether it's good or bad.
+LeetCode hasn't accepted them, so the examples aren't enough. In a scratch script,
+also compare against a simple brute force on many random small inputs, try the edge
+cases the constraints allow (smallest input, largest values), and time a max-size
+input. Good means all of that passes and it uses the idea the question is built
+around, so one that would time out is bad. If it's bad, name an input that fails and
+what it got against what it should get, or say that it's too slow, but don't say
+what to change unless asked. Answer the user's questions, but skip
 the understanding check. Commit only a good one, on its own, with the message
 `Re-solve <Problem name>`.
 

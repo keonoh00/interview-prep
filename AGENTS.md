@@ -13,6 +13,13 @@ uv run solutions/<topic>/<problem>.py
 Keep things simple. Don't add tooling such as progress tracking, timers or prompts
 unless the user asks for it.
 
+## Re-solving
+
+`re-solve/` holds problems already solved under `solutions/`, for practicing recall.
+Don't review these. Answer the user's questions about them, but skip the review and
+the understanding check. Once the user says one is done, commit only that file with
+the message `Re-solve <Problem name>`.
+
 ## Reviewing a solution
 
 The user brings solutions that LeetCode has already accepted, so don't re-test

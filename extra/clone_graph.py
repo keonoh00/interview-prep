@@ -72,24 +72,24 @@ from typing import Optional
 
 class Solution:
     def cloneGraph(self, node: Optional["Node"]) -> Optional["Node"]:
-        collected = {}  # (1)
+        collected = {}
 
         def dfs(node):
             if not node:
                 return None
-            if node in collected:  # (2)
-                return collected[node]  # (2)
+            if node in collected:
+                return collected[node]
 
             _node = Node(node.val)
-            collected[node] = _node  # (1)
+            collected[node] = _node
 
-            for n in node.neighbors:  # (3)
+            for n in node.neighbors:
                 _neighbors = dfs(n)
                 _node.neighbors.append(_neighbors)
 
-            return _node  # (4)
+            return _node
 
-        return dfs(node)  # (4)
+        return dfs(node)
 
 
 CASES = [

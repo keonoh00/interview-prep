@@ -37,15 +37,15 @@ class Solution:
 
         while i < len(s):
             current_char = s[i]
-            while current_char in set_container:  # (1)
-                set_container.remove(list_container.pop(0))  # (1)
+            while current_char in set_container:
+                set_container.remove(list_container.pop(0))
             list_container.append(current_char)
             set_container.add(current_char)
-            if max_length < len(set_container):  # (2)
-                max_length = len(set_container)  # (2)
+            if max_length < len(set_container):
+                max_length = len(set_container)
             i += 1
 
-        return max_length  # (3)
+        return max_length
 
 
 CASES = [

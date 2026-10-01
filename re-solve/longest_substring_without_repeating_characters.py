@@ -25,9 +25,7 @@ Example 3:
 
 Constraints:
   - 0 <= s.length <= 10^5
-  - s consists of English letters, digits, symbols and spaces.
-
-Tags: hash-table, string, sliding-window"""
+  - s consists of English letters, digits, symbols and spaces."""
 
 
 class Solution:

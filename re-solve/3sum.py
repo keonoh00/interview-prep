@@ -29,9 +29,7 @@ Example 3:
 
 Constraints:
   - 3 <= nums.length <= 3000
-  - -10^5 <= nums[i] <= 10^5
-
-Tags: array, two-pointers, sorting"""
+  - -10^5 <= nums[i] <= 10^5"""
 
 
 class Solution:

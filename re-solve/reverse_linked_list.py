@@ -24,9 +24,7 @@ Constraints:
   - -5000 <= Node.val <= 5000
 
 Follow up: A linked list can be reversed with a loop or with recursion. Could you
-write both?
-
-Tags: linked-list, recursion"""
+write both?"""
 
 from __future__ import annotations
 

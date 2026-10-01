@@ -30,9 +30,7 @@ Example 3:
 Constraints:
   - 1 <= piles.length <= 10^4
   - piles.length <= h <= 10^9
-  - 1 <= piles[i] <= 10^9
-
-Tags: array, binary-search"""
+  - 1 <= piles[i] <= 10^9"""
 
 
 class Solution:

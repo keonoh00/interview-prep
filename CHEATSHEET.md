@@ -45,16 +45,51 @@ whatever removes that repeat.
   If it's too big, move the right pointer left.
 - **Done:** Two Sum II, 3Sum, Container With Most Water
 
+```python
+def two_sum_sorted(nums, target):
+    left, right = 0, len(nums) - 1
+    while left < right:
+        total = nums[left] + nums[right]
+        if total == target:
+            return [left, right]
+        if total < target:
+            left += 1
+        else:
+            right -= 1
+    return []
+```
+
 ### Hash map or set
 - **Clue:** "seen this before?", counting, grouping
 - **How:** store what you've seen, so each lookup is O(1)
 - **Done:** Contains Duplicate, Group Anagrams, Top K Frequent Elements
+
+```python
+def has_duplicate(nums):
+    seen = set()
+    for num in nums:
+        if num in seen:
+            return True
+        seen.add(num)
+    return False
+```
 
 ### Running total + hash map
 - **Clue:** a contiguous subarray whose sum is k
 - **How:** the sum from i to j is the total at j minus the total before i, so look up
   `total - k` in the map
 - **Done:** Subarray Sum Equals K
+
+```python
+def subarray_sum(nums, k):
+    count = total = 0
+    seen = {0: 1}  # running total -> how many times we've had it
+    for num in nums:
+        total += num
+        count += seen.get(total - k, 0)
+        seen[total] = seen.get(total, 0) + 1
+    return count
+```
 
 ### Sliding window
 - **Clue:** the longest or shortest *contiguous* substring or subarray that follows
@@ -64,11 +99,56 @@ whatever removes that repeat.
 - **Done:** Longest Substring Without Repeating Characters, Best Time to Buy and Sell
   Stock
 
+```python
+def longest_unique(s):
+    window = set()
+    left = best = 0
+    for right, ch in enumerate(s):
+        while ch in window:  # rule broken: shrink from the left
+            window.remove(s[left])
+            left += 1
+        window.add(ch)
+        best = max(best, right - left + 1)
+    return best
+```
+
 ### Binary search
 - **Clue:** sorted input, or "the smallest X that works" where checking one X is easy
 - **How:** check the middle and throw away the half that can't hold the answer
 - **Done:** Find Minimum in Rotated Sorted Array, Search a 2D Matrix, Koko Eating
   Bananas
+
+Find a target in a sorted list:
+
+```python
+def search(nums, target):
+    low, high = 0, len(nums) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if nums[mid] == target:
+            return mid
+        if nums[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+```
+
+Find the smallest X that works, as in Koko:
+
+```python
+def smallest_that_works(low, high, works):
+    while low < high:
+        mid = (low + high) // 2  # round down
+        if works(mid):
+            high = mid  # mid might be the answer, so keep it
+        else:
+            low = mid + 1
+    return low
+```
+
+Keep the pairs together: `high = mid - 1` goes with `while low <= high`, and
+`high = mid` goes with `while low < high` and rounding down.
 
 ### Stack
 - **Clue:** the next greater or warmer item; matching brackets
@@ -76,10 +156,34 @@ whatever removes that repeat.
   answer arrives
 - **Done:** Daily Temperatures, Valid Parentheses
 
+```python
+def daily_temps(temps):
+    answer = [0] * len(temps)
+    stack = []  # indices still waiting for a warmer day
+    for i, t in enumerate(temps):
+        while stack and temps[stack[-1]] < t:
+            j = stack.pop()
+            answer[j] = i - j
+        stack.append(i)
+    return answer
+```
+
 ### Heap
 - **Clue:** the k largest, smallest or closest
 - **How:** keep a heap of size k (`heapq` is a min-heap)
 - **Done:** Kth Largest Element in an Array, K Closest Points to Origin
+
+```python
+import heapq
+
+def kth_largest(nums, k):
+    heap = []
+    for num in nums:
+        heapq.heappush(heap, num)
+        if len(heap) > k:
+            heapq.heappop(heap)  # drop the smallest
+    return heap[0]
+```
 
 ### DFS or BFS
 - **Clue:** regions in a grid, something spreading, the fewest steps
@@ -87,11 +191,63 @@ whatever removes that repeat.
   you need the fewest steps.
 - **Done:** Number of Islands, Rotting Oranges
 
+DFS, which counts islands:
+
+```python
+def num_islands(grid):
+    rows, cols = len(grid), len(grid[0])
+
+    def dfs(r, c):
+        if r < 0 or c < 0 or r >= rows or c >= cols or grid[r][c] != "1":
+            return
+        grid[r][c] = "0"  # mark as visited
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            dfs(r + dr, c + dc)
+
+    count = 0
+    for r in range(rows):
+        for c in range(cols):
+            if grid[r][c] == "1":
+                dfs(r, c)
+                count += 1
+    return count
+```
+
+BFS, which finds the fewest steps. Replace `neighbours(node)` with the problem's own
+moves:
+
+```python
+from collections import deque
+
+def bfs_steps(start, goal):
+    queue = deque([start])
+    seen = {start}
+    steps = 0
+    while queue:
+        for _ in range(len(queue)):  # everything at this distance
+            node = queue.popleft()
+            if node == goal:
+                return steps
+            for nxt in neighbours(node):
+                if nxt not in seen:
+                    seen.add(nxt)
+                    queue.append(nxt)
+        steps += 1
+    return -1
+```
+
 ### Tree recursion
 - **Clue:** any binary tree
 - **How:** solve for the left and right subtrees, then combine them. For level by
-  level, use BFS with a queue.
+  level, use the BFS template above.
 - **Done:** Validate Binary Search Tree, Binary Tree Level Order Traversal
+
+```python
+def max_depth(node):
+    if not node:
+        return 0
+    return 1 + max(max_depth(node.left), max_depth(node.right))
+```
 
 ### Sort, then merge
 - **Clue:** overlapping intervals
@@ -99,14 +255,45 @@ whatever removes that repeat.
   merge them.
 - **Done:** Merge Intervals
 
+```python
+def merge(intervals):
+    intervals.sort()
+    merged = [intervals[0]]
+    for start, end in intervals[1:]:
+        if start <= merged[-1][1]:  # overlaps the last one
+            merged[-1][1] = max(merged[-1][1], end)
+        else:
+            merged.append([start, end])
+    return merged
+```
+
 ### Dynamic programming
 - **Clue:** the number of ways, or the best total where each choice depends on earlier
   ones
 - **How:** build the answer for i from the answers for i - 1 and i - 2
 - **Done:** Climbing Stairs, House Robber
 
+```python
+def rob(nums):
+    prev2 = prev1 = 0  # best up to i - 2, best up to i - 1
+    for num in nums:
+        prev2, prev1 = prev1, max(prev1, prev2 + num)  # skip it, or take it
+    return prev1
+```
+
 ### Linked list tricks
 - **Clue:** any linked list
 - **How:** a dummy node saves special cases for the head. For slow and fast pointers,
   fast moves 2 steps and slow moves 1.
 - **Done:** Linked List Cycle, Remove Nth Node From End of List
+
+```python
+def has_cycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+        if slow is fast:
+            return True
+    return False
+```

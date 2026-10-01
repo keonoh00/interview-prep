@@ -34,7 +34,24 @@ Constraints:
 
 class Solution:
     def threeSum(self, nums: list[int]) -> list[list[int]]:
-        raise NotImplementedError
+        nums.sort()
+        result = set()
+        for num1_idx in range(len(nums) - 2):
+            num2_idx = num1_idx + 1
+            num3_idx = len(nums) - 1
+            while num2_idx < num3_idx:
+                candidate = (nums[num1_idx], nums[num2_idx], nums[num3_idx])
+                candidate_sum = sum(candidate)
+                if candidate_sum == 0:
+                    result.add(candidate)
+                    num2_idx += 1
+                    num3_idx -= 1
+                elif candidate_sum < 0:
+                    num2_idx += 1
+                else:
+                    num3_idx -= 1
+
+        return [list(r) for r in result]
 
 
 CASES = [

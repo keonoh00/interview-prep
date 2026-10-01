@@ -30,7 +30,22 @@ Constraints:
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        raise NotImplementedError
+        list_container = []
+        set_container = set()
+        i = 0
+        max_length = 0
+
+        while i < len(s):
+            current_char = s[i]
+            while current_char in set_container:  # (1)
+                set_container.remove(list_container.pop(0))  # (1)
+            list_container.append(current_char)
+            set_container.add(current_char)
+            if max_length < len(set_container):  # (2)
+                max_length = len(set_container)  # (2)
+            i += 1
+
+        return max_length  # (3)
 
 
 CASES = [

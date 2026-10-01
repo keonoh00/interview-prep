@@ -35,7 +35,25 @@ Constraints:
 
 class Solution:
     def minEatingSpeed(self, piles: list[int], h: int) -> int:
-        raise NotImplementedError
+        import math
+
+        high_k = max(piles)
+        low_k = math.ceil(sum(piles) / h)
+        min_k = max(piles)
+
+        while low_k < high_k:
+            k = low_k + (high_k - low_k) // 2
+            hours = 0
+            for p in piles:
+                hours += math.ceil(p / k)
+            if hours > h:
+                low_k = k + 1
+            else:
+                if min_k > k:
+                    min_k = k
+                high_k = k
+
+        return min_k
 
 
 CASES = [

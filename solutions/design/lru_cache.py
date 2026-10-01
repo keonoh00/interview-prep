@@ -40,19 +40,27 @@ Constraints:
   - 0 <= value <= 10^5
   - At most 2 * 10^5 calls will be made to get and put."""
 
+from collections import OrderedDict
+
+
 class LRUCache:
 
     def __init__(self, capacity: int):
-        raise NotImplementedError
-
+        self.capacity = capacity
+        self.cache: OrderedDict[int, int] = OrderedDict()
 
     def get(self, key: int) -> int:
-        raise NotImplementedError
+        if key not in self.cache:
+            return -1
 
+        self.cache.move_to_end(key)
+        return self.cache[key]
 
     def put(self, key: int, value: int) -> None:
-        raise NotImplementedError
-
+        self.cache[key] = value
+        self.cache.move_to_end(key)
+        if len(self.cache) > self.capacity:
+            self.cache.popitem(last=False)
 
 
 # Your LRUCache object will be instantiated and called as such:
@@ -62,8 +70,10 @@ class LRUCache:
 
 CASES = [
     (
-        (['LRUCache', 'put', 'put', 'get', 'put', 'get', 'put', 'get', 'get', 'get'],
-         [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]),
+        (
+            ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"],
+            [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]],
+        ),
         [None, None, None, 1, None, -1, None, -1, 3, 4],
     ),
 ]

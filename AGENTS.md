@@ -16,9 +16,12 @@ unless the user asks for it.
 ## Re-solving
 
 `re-solve/` holds problems already solved under `solutions/`, for practicing recall.
-Don't review these. Answer the user's questions about them, but skip the review and
-the understanding check. Once the user says one is done, commit only that file with
-the message `Re-solve <Problem name>`.
+Don't review these, but run the file and say in one line whether it's good or bad.
+Good means the examples pass and it uses the idea the question is built around, so
+one that would time out is bad. If it's bad, say which examples fail or that it's too
+slow, but don't say what to change unless asked. Answer the user's questions, but skip
+the understanding check. Commit only a good one, on its own, with the message
+`Re-solve <Problem name>`.
 
 ## Reviewing a solution
 

@@ -68,9 +68,29 @@ class Node:
 """
 
 from typing import Optional
+
+
 class Solution:
-    def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        raise NotImplementedError
+    def cloneGraph(self, node: Optional["Node"]) -> Optional["Node"]:
+        collected = {}  # (1)
+
+        def dfs(node):
+            if not node:
+                return None
+            if node in collected:  # (2)
+                return collected[node]  # (2)
+
+            _node = Node(node.val)
+            collected[node] = _node  # (1)
+
+            for n in node.neighbors:  # (3)
+                _neighbors = dfs(n)
+                _node.neighbors.append(_neighbors)
+
+            return _node  # (4)
+
+        return dfs(node)  # (4)
+
 
 CASES = [
     (([[2, 4], [1, 3], [2, 4], [1, 3]],), [[2, 4], [1, 3], [2, 4], [1, 3]]),
@@ -80,6 +100,6 @@ CASES = [
 
 if __name__ == "__main__":
     # Node too, so your code can call Node() just as it can on LeetCode.
-    from interview_prep import run, Node, build_graph, graph_to_adj
+    from interview_prep import Node, build_graph, graph_to_adj, run
 
     run(lambda a: graph_to_adj(Solution().cloneGraph(build_graph(a))), CASES)

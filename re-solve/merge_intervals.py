@@ -26,9 +26,18 @@ Constraints:
   - intervals[i].length == 2
   - 0 <= start_i <= end_i <= 10^4"""
 
+
 class Solution:
     def merge(self, intervals: list[list[int]]) -> list[list[int]]:
-        raise NotImplementedError
+        intervals.sort()
+        merged = [intervals[0]]
+        for start, end in intervals[1:]:
+            if start <= merged[-1][1]:  # overlaps the last one
+                merged[-1][1] = max(merged[-1][1], end)
+            else:
+                merged.append([start, end])
+        return merged
+
 
 CASES = [
     (([[1, 3], [2, 6], [8, 10], [15, 18]],), [[1, 6], [8, 10], [15, 18]]),

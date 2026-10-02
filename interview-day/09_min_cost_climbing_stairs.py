@@ -24,7 +24,12 @@ Constraints:
 
 class Solution:
     def minCostClimbingStairs(self, cost: list[int]) -> int:
-        raise NotImplementedError
+        prev1 = prev2 = 0
+        for c in cost:
+            current = min(prev1 + c, prev2 + c)
+            prev2 = prev1
+            prev1 = current
+        return min(prev1, prev2)
 
 
 CASES = [

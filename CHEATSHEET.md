@@ -10,43 +10,47 @@ Before writing code, take about two minutes and say three things out loud:
 
 ## Step 1: What type of question, and how big is n?
 
-Find the type of question on the left, then the row for your n. Where a type has two
-rows, the first is the brute force for small n and the second is the faster one for
-big n.
+Find the type on the left, then the row for your n. Inside each type, rows go from
+slowest to fastest, so anything further down also works.
 
 <table>
 <tr><th>Type of question</th><th>Constraint</th><th>Time</th><th>Algorithm</th></tr>
-<tr><td rowspan="3">Pair that adds up to a target (Two Sum, Two Sum II)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Two nested loops: every pair</td></tr>
-<tr><td rowspan="2">n ≤ 10⁵</td><td rowspan="2">O(n)</td><td>Hash map: look up target − num</td></tr>
-<tr><td>Two pointers from both ends, if sorted</td></tr>
-<tr><td rowspan="2">Triplets that add up to a target (3Sum)</td><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops: every triplet</td></tr>
-<tr><td>n ≤ 3,000</td><td>O(n²)</td><td>Sort, then two pointers for each item</td></tr>
-<tr><td>Seen this before? Counting, grouping (Contains Duplicate, Group Anagrams, Top K Frequent Elements)</td><td>n ≤ 10⁵</td><td>O(n)</td><td>Hash map or set</td></tr>
-<tr><td rowspan="2">A subarray whose sum is k (Subarray Sum Equals K)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Every start, adding up to every end</td></tr>
-<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Running total + hash map</td></tr>
-<tr><td rowspan="2">The longest or shortest substring or subarray that follows a rule (Longest Substring Without Repeating Characters)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Every start, growing to the right</td></tr>
-<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Sliding window</td></tr>
-<tr><td>Find a target in a sorted array (Binary Search, Search a 2D Matrix, Find Minimum in Rotated Sorted Array)</td><td>any n</td><td>O(log n)</td><td>Binary search</td></tr>
-<tr><td>The smallest X that works (Koko Eating Bananas)</td><td>answer up to 10⁹</td><td>O(n log m)</td><td>Binary search on the answer</td></tr>
-<tr><td rowspan="2">The next greater or warmer item, matching brackets (Daily Temperatures, Valid Parentheses)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>For each item, scan to the right</td></tr>
-<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Stack</td></tr>
-<tr><td rowspan="2">The k largest, smallest or closest (Kth Largest Element in an Array, K Closest Points to Origin)</td><td rowspan="2">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort, then take the first k</td></tr>
-<tr><td>O(n log k)</td><td>Heap of size k</td></tr>
-<tr><td>Overlapping intervals (Merge Intervals)</td><td>n ≤ 10⁵</td><td>O(n log n)</td><td>Sort by start, then merge</td></tr>
-<tr><td>Regions in a grid, something spreading, the fewest steps (Number of Islands, Rotting Oranges)</td><td>rows, cols ≤ 300</td><td>O(rows × cols)</td><td>DFS, or BFS for the fewest steps</td></tr>
-<tr><td>Any binary tree (Maximum Depth, Validate BST, Level Order Traversal)</td><td>n ≤ 10⁴ nodes</td><td>O(n)</td><td>Tree recursion, or BFS for level by level</td></tr>
-<tr><td>Any linked list (Reverse Linked List, Linked List Cycle, Remove Nth Node From End)</td><td>n ≤ 10⁴ nodes</td><td>O(n)</td><td>Slow and fast pointers, dummy node</td></tr>
-<tr><td>The number of ways, or the best total along a line (Climbing Stairs, House Robber)</td><td>n ≤ 10⁵</td><td>O(n)</td><td>DP with one loop</td></tr>
-<tr><td>Longest increasing subsequence; split a string into words (Word Break)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>DP that looks back at every j &lt; i</td></tr>
-<tr><td>Two strings: common subsequence, edit distance (Longest Common Subsequence)</td><td>each ≤ 1,000</td><td>O(len(a) × len(b))</td><td>DP on two strings</td></tr>
-<tr><td>Paths through a grid (Unique Paths)</td><td>rows, cols ≤ 100</td><td>O(rows × cols)</td><td>DP on a grid</td></tr>
-<tr><td>Make an amount, or a subset that adds up to a target (Coin Change, Partition Equal Subset Sum)</td><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount from 0 up</td></tr>
-<tr><td rowspan="2">Every arrangement or every subset (Permutations, Subsets)</td><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order</td></tr>
-<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it</td></tr>
+<tr><td rowspan="16">Array or string</td><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order (Permutations)</td></tr>
+<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it (Subsets)</td></tr>
+<tr><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops: every triplet</td></tr>
+<tr><td rowspan="4">n ≤ 3,000</td><td rowspan="4">O(n²)</td><td>Two nested loops: every pair</td></tr>
+<tr><td>Sort, then two pointers for each item: triplets (3Sum)</td></tr>
+<tr><td>DP that looks back at every j &lt; i: longest increasing subsequence, Word Break</td></tr>
+<tr><td>DP on two strings: common subsequence, edit distance</td></tr>
+<tr><td rowspan="8">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort first</td></tr>
+<tr><td>O(n log k)</td><td>Heap of size k: the k largest, smallest or closest</td></tr>
+<tr><td rowspan="6">O(n)</td><td>Hash map or set: seen before, counting, grouping</td></tr>
+<tr><td>Running total + hash map: a subarray whose sum is k</td></tr>
+<tr><td>Two pointers: a pair in a sorted array, palindromes</td></tr>
+<tr><td>Sliding window: the longest or shortest substring or subarray</td></tr>
+<tr><td>Stack: the next greater item, matching brackets</td></tr>
+<tr><td>DP with one loop: the number of ways, the best total</td></tr>
+<tr><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount: Coin Change, subset that adds up to a target</td></tr>
+<tr><td>Sorted array</td><td>any n</td><td>O(log n)</td><td>Binary search: find a target, or where it goes</td></tr>
+<tr><td>Answer is a number to search for</td><td>answer up to 10⁹</td><td>O(n log m)</td><td>Binary search on the answer: the smallest X that works (Koko)</td></tr>
+<tr><td>Intervals</td><td>n ≤ 10⁵</td><td>O(n log n)</td><td>Sort by start, then merge</td></tr>
+<tr><td>Linked list</td><td>n ≤ 10⁴</td><td>O(n)</td><td>Dummy node; slow and fast pointers; reverse in place</td></tr>
+<tr><td rowspan="2">Binary tree</td><td rowspan="2">n ≤ 10⁴ nodes</td><td rowspan="2">O(n)</td><td>DFS recursion: depth, diameter, validate BST</td></tr>
+<tr><td>BFS with a queue: level by level</td></tr>
+<tr><td rowspan="3">Grid</td><td rowspan="3">rows, cols ≤ 300</td><td rowspan="3">O(rows × cols)</td><td>DFS: count regions (Number of Islands, Flood Fill)</td></tr>
+<tr><td>BFS: something spreading, the fewest steps (Rotting Oranges)</td></tr>
+<tr><td>DP on a grid: count paths (Unique Paths)</td></tr>
+<tr><td rowspan="4">Graph</td><td rowspan="4">V, E ≤ 10⁵</td><td rowspan="3">O(V + E)</td><td>DFS or BFS on an adjacency list: is there a path, connected parts</td></tr>
+<tr><td>BFS: the fewest steps</td></tr>
+<tr><td>Topological sort: prerequisites, an order to do things in</td></tr>
+<tr><td>O(E log V)</td><td>Dijkstra with a heap: the cheapest path when edges have costs</td></tr>
+<tr><td rowspan="2">Design a data structure</td><td rowspan="2">calls ≤ 10⁵</td><td>O(1) per call</td><td>Hash map + linked list (LRU Cache); stack of (value, min) (Min Stack)</td></tr>
+<tr><td>O(log k) per call</td><td>Heap of size k (Kth Largest Element in a Stream)</td></tr>
 </table>
 
-k is the k in the question, and m is the largest value. A row passes if it takes
-under about 10⁷ steps, which Python does in about a second.
+k is the k in the question, m is the largest value, V is the number of nodes and E the
+number of edges. A row passes if it takes under about 10⁷ steps, which Python does in
+about a second.
 
 ---
 

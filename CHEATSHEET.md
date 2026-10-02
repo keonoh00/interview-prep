@@ -10,47 +10,46 @@ Before writing code, take about two minutes and say three things out loud:
 
 ## Step 1: What do the constraints allow?
 
-Find your constraint on the left. The algorithms on the right will pass. The top part
-goes from slowest to fastest, so everything further down works for your n too. For a
-grid, n is rows × cols.
+Find your constraint on the left. The algorithms on the right, down to the next
+constraint, will pass. The top part goes from slowest to fastest, so everything
+further down works for your n too. For a grid, n is rows × cols.
 
-<table>
-<tr><th>Constraint</th><th>Algorithm</th></tr>
-<tr><th colspan="2">How big n is</th></tr>
-<tr><td>n ≤ 10</td><td>Try every order (backtracking over permutations)</td></tr>
-<tr><td>n ≤ 20</td><td>Try every subset: take it or skip it (backtracking)</td></tr>
-<tr><td>n ≤ 100</td><td>Three nested loops: every triplet</td></tr>
-<tr><td rowspan="3">n ≤ 3,000</td><td>Two nested loops: every pair</td></tr>
-<tr><td>DP that looks back at every j &lt; i (Longest Increasing Subsequence, Word Break)</td></tr>
-<tr><td>DP on two strings, <code>dp[i][j]</code> (Longest Common Subsequence)</td></tr>
-<tr><td rowspan="10">n ≤ 10⁵ or more</td><td>Sort first; sort, then merge</td></tr>
-<tr><td>Heap</td></tr>
-<tr><td>Binary search inside a loop</td></tr>
-<tr><td>Hash map or set; running total + hash map</td></tr>
-<tr><td>Two pointers</td></tr>
-<tr><td>Sliding window</td></tr>
-<tr><td>Stack</td></tr>
-<tr><td>DFS or BFS; tree recursion</td></tr>
-<tr><td>DP with one loop (Climbing Stairs, House Robber); DP on a grid</td></tr>
-<tr><td>Linked list tricks</td></tr>
-<tr><td rowspan="2">a value up to 10⁹</td><td>Binary search on the answer: only about 30 tries</td></tr>
-<tr><td>A hash map, not a list indexed by value</td></tr>
-<tr><th colspan="2">What else the constraints say</th></tr>
-<tr><td rowspan="2">the array is sorted</td><td>Binary search</td></tr>
-<tr><td>Two pointers from both ends</td></tr>
-<tr><td>values can be negative</td><td>Running total + hash map (a sliding window on sums breaks)</td></tr>
-<tr><td>only lowercase letters, or values 0 to 100</td><td>A count array such as <code>[0] * 26</code>, instead of sorting</td></tr>
-<tr><td>an amount or target up to 10⁴</td><td>DP over every amount from 0 to the target (Coin Change, Partition Equal Subset Sum)</td></tr>
-<tr><td>a k is given</td><td>A heap of size k</td></tr>
-<tr><td rowspan="2">a grid up to 300 × 300</td><td>DFS or BFS over every cell</td></tr>
-<tr><td>DP on a grid</td></tr>
-<tr><td>up to 10⁵ nodes and edges</td><td>DFS or BFS</td></tr>
-<tr><td>"must run in O(log n)"</td><td>Binary search</td></tr>
-<tr><td>"O(n) time" on unsorted input</td><td>A hash set or count array, no sorting</td></tr>
-<tr><td rowspan="3">"O(1) extra space"</td><td>Two pointers</td></tr>
-<tr><td>Slow and fast pointers</td></tr>
-<tr><td>Change the input in place</td></tr>
-</table>
+| Constraint | Algorithm |
+|---|---|
+| **How big n is** | |
+| n ≤ 10 | Try every order (backtracking over permutations) |
+| n ≤ 20 | Try every subset: take it or skip it (backtracking) |
+| n ≤ 100 | Three nested loops: every triplet |
+| n ≤ 3,000 | Two nested loops: every pair |
+|  | DP that looks back at every j < i (Longest Increasing Subsequence, Word Break) |
+|  | DP on two strings, `dp[i][j]` (Longest Common Subsequence) |
+| n ≤ 10⁵ or more | Sort first; sort, then merge |
+|  | Heap |
+|  | Binary search inside a loop |
+|  | Hash map or set; running total + hash map |
+|  | Two pointers |
+|  | Sliding window |
+|  | Stack |
+|  | DFS or BFS; tree recursion |
+|  | DP with one loop (Climbing Stairs, House Robber); DP on a grid |
+|  | Linked list tricks |
+| a value up to 10⁹ | Binary search on the answer: only about 30 tries |
+|  | A hash map, not a list indexed by value |
+| **What else the constraints say** | |
+| the array is sorted | Binary search |
+|  | Two pointers from both ends |
+| values can be negative | Running total + hash map (a sliding window on sums breaks) |
+| only lowercase letters, or values 0 to 100 | A count array such as `[0] * 26`, instead of sorting |
+| an amount or target up to 10⁴ | DP over every amount from 0 to the target (Coin Change, Partition Equal Subset Sum) |
+| a k is given | A heap of size k |
+| a grid up to 300 × 300 | DFS or BFS over every cell |
+|  | DP on a grid |
+| up to 10⁵ nodes and edges | DFS or BFS |
+| "must run in O(log n)" | Binary search |
+| "O(n) time" on unsorted input | A hash set or count array, no sorting |
+| "O(1) extra space" | Two pointers |
+|  | Slow and fast pointers |
+|  | Change the input in place |
 
 A row passes if it takes under about 10⁷ steps, which Python does in about a second.
 That's why n ≤ 10⁴ already rules out two nested loops: 10⁴ × 10⁴ is 10⁸ steps.

@@ -32,7 +32,35 @@ class Solution:
     def floodFill(
         self, image: list[list[int]], sr: int, sc: int, color: int
     ) -> list[list[int]]:
-        raise NotImplementedError
+        from collections import deque
+
+        q = deque()
+        q.append([sc, sr])
+        starting_color = image[sr][sc]
+        seen = {(sc, sr)}
+
+        while q:
+            target_position_x, target_position_y = q.popleft()
+            target_color = image[target_position_y][target_position_x]
+
+            if target_color == starting_color:
+                image[target_position_y][target_position_x] = color
+
+            up = [target_position_x, target_position_y - 1]
+            down = [target_position_x, target_position_y + 1]
+            left = [target_position_x - 1, target_position_y]
+            right = [target_position_x + 1, target_position_y]
+
+            for adj_x, adj_y in [up, down, left, right]:
+                if (
+                    0 <= adj_y < len(image)
+                    and 0 <= adj_x < len(image[0])
+                    and (adj_x, adj_y) not in seen
+                    and image[adj_y][adj_x] == starting_color
+                ):
+                    seen.add((adj_x, adj_y))
+                    q.append([adj_x, adj_y])
+        return image
 
 
 CASES = [

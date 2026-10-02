@@ -10,18 +10,18 @@ Before writing code, take about two minutes and say three things out loud:
 
 ## Step 1: What type of question, and how big is n?
 
-Find the type on the left, then the row for your n. Inside each type, rows go from
-slowest to fastest, so anything further down also works.
+Find the type on the left, then the row for your n. Only three sizes matter: 20, 10³
+and 10⁵. Round your n up, so n ≤ 10⁴ uses the 10⁵ row. Anything further down a type
+is faster, so it also works.
 
 <table>
 <tr><th>Type of question</th><th>Constraint</th><th>Time</th><th>Algorithm</th></tr>
-<tr><td rowspan="16">Array or string</td><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order (Permutations)</td></tr>
-<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it (Subsets)</td></tr>
-<tr><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops: every triplet</td></tr>
-<tr><td rowspan="4">n ≤ 3,000</td><td rowspan="4">O(n²)</td><td>Two nested loops: every pair</td></tr>
+<tr><td rowspan="14">Array or string</td><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: every subset or every order</td></tr>
+<tr><td rowspan="5">n ≤ 10³</td><td rowspan="4">O(n²)</td><td>Two nested loops: every pair</td></tr>
 <tr><td>Sort, then two pointers for each item: triplets (3Sum)</td></tr>
 <tr><td>DP that looks back at every j &lt; i: longest increasing subsequence, Word Break</td></tr>
 <tr><td>DP on two strings: common subsequence, edit distance</td></tr>
+<tr><td>O(n × amount)</td><td>DP over every amount: Coin Change, subset that adds up to a target</td></tr>
 <tr><td rowspan="8">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort first</td></tr>
 <tr><td>O(n log k)</td><td>Heap of size k: the k largest, smallest or closest</td></tr>
 <tr><td rowspan="6">O(n)</td><td>Hash map or set: seen before, counting, grouping</td></tr>
@@ -30,27 +30,25 @@ slowest to fastest, so anything further down also works.
 <tr><td>Sliding window: the longest or shortest substring or subarray</td></tr>
 <tr><td>Stack: the next greater item, matching brackets</td></tr>
 <tr><td>DP with one loop: the number of ways, the best total</td></tr>
-<tr><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount: Coin Change, subset that adds up to a target</td></tr>
-<tr><td>Sorted array</td><td>any n</td><td>O(log n)</td><td>Binary search: find a target, or where it goes</td></tr>
+<tr><td>Sorted array</td><td>any size</td><td>O(log n)</td><td>Binary search: find a target, or where it goes</td></tr>
 <tr><td>Answer is a number to search for</td><td>answer up to 10⁹</td><td>O(n log m)</td><td>Binary search on the answer: the smallest X that works (Koko)</td></tr>
-<tr><td>Intervals</td><td>n ≤ 10⁵</td><td>O(n log n)</td><td>Sort by start, then merge</td></tr>
-<tr><td>Linked list</td><td>n ≤ 10⁴</td><td>O(n)</td><td>Dummy node; slow and fast pointers; reverse in place</td></tr>
-<tr><td rowspan="2">Binary tree</td><td rowspan="2">n ≤ 10⁴ nodes</td><td rowspan="2">O(n)</td><td>DFS recursion: depth, diameter, validate BST</td></tr>
+<tr><td>Intervals</td><td>any size</td><td>O(n log n)</td><td>Sort by start, then merge</td></tr>
+<tr><td>Linked list</td><td>any size</td><td>O(n)</td><td>Dummy node; slow and fast pointers; reverse in place</td></tr>
+<tr><td rowspan="2">Binary tree</td><td rowspan="2">any size</td><td rowspan="2">O(n)</td><td>DFS recursion: depth, diameter, validate BST</td></tr>
 <tr><td>BFS with a queue: level by level</td></tr>
-<tr><td rowspan="3">Grid</td><td rowspan="3">rows, cols ≤ 300</td><td rowspan="3">O(rows × cols)</td><td>DFS: count regions (Number of Islands, Flood Fill)</td></tr>
+<tr><td rowspan="3">Grid</td><td rowspan="3">any size</td><td rowspan="3">O(rows × cols)</td><td>DFS: count regions (Number of Islands, Flood Fill)</td></tr>
 <tr><td>BFS: something spreading, the fewest steps (Rotting Oranges)</td></tr>
 <tr><td>DP on a grid: count paths (Unique Paths)</td></tr>
-<tr><td rowspan="4">Graph</td><td rowspan="4">V, E ≤ 10⁵</td><td rowspan="3">O(V + E)</td><td>DFS or BFS on an adjacency list: is there a path, connected parts</td></tr>
+<tr><td rowspan="4">Graph</td><td rowspan="4">any size</td><td rowspan="3">O(V + E)</td><td>DFS or BFS on an adjacency list: is there a path, connected parts</td></tr>
 <tr><td>BFS: the fewest steps</td></tr>
 <tr><td>Topological sort: prerequisites, an order to do things in</td></tr>
 <tr><td>O(E log V)</td><td>Dijkstra with a heap: the cheapest path when edges have costs</td></tr>
-<tr><td rowspan="2">Design a data structure</td><td rowspan="2">calls ≤ 10⁵</td><td>O(1) per call</td><td>Hash map + linked list (LRU Cache); stack of (value, min) (Min Stack)</td></tr>
+<tr><td rowspan="2">Design a data structure</td><td rowspan="2">any size</td><td>O(1) per call</td><td>Hash map + linked list (LRU Cache); stack of (value, min) (Min Stack)</td></tr>
 <tr><td>O(log k) per call</td><td>Heap of size k (Kth Largest Element in a Stream)</td></tr>
 </table>
 
 k is the k in the question, m is the largest value, V is the number of nodes and E the
-number of edges. A row passes if it takes under about 10⁷ steps, which Python does in
-about a second.
+number of edges.
 
 ---
 

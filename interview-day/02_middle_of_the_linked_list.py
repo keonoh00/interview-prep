@@ -29,7 +29,17 @@ from __future__ import annotations
 #         self.next = next
 class Solution:
     def middleNode(self, head: ListNode | None) -> ListNode | None:
-        raise NotImplementedError
+        collection = []
+        i = 0
+
+        while head:
+            collection.append(head)
+            head = head.next
+            i += 1
+
+        half_idx = i // 2
+
+        return collection[half_idx]
 
 
 CASES = [

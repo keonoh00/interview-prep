@@ -31,7 +31,19 @@ from __future__ import annotations
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode | None) -> int:
-        raise NotImplementedError
+        best = 0
+
+        def dfs(node: TreeNode | None):
+            nonlocal best
+            if not node:
+                return 0
+            le = dfs(node.left)
+            re = dfs(node.right)
+            best = max(best, le + re)
+            return max(re, le) + 1
+
+        dfs(root)
+        return best
 
 
 CASES = [

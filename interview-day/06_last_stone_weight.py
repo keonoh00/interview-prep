@@ -26,7 +26,24 @@ Constraints:
 
 class Solution:
     def lastStoneWeight(self, stones: list[int]) -> int:
-        raise NotImplementedError
+        import heapq
+
+        heap_stones = [-s for s in stones]
+
+        heapq.heapify(heap_stones)
+
+        while len(heap_stones) > 1:
+
+            max_stone = heapq.heappop(heap_stones) * -1
+            next_stone = heapq.heappop(heap_stones) * -1
+
+            max_stone_left = max_stone - next_stone
+            if max_stone_left > 0:
+                heapq.heappush(heap_stones, max_stone_left * -1)
+
+        if heap_stones:
+            return heapq.heappop(heap_stones) * -1
+        return 0
 
 
 CASES = [

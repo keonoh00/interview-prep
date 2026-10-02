@@ -10,49 +10,37 @@ Before writing code, take about two minutes and say three things out loud:
 
 ## Step 1: What do the constraints allow?
 
-Find your constraint on the left. The algorithms on the right, down to the next
-constraint, will pass. The top part goes from slowest to fastest, so everything
-further down works for your n too. For a grid, n is rows × cols.
+Find your n on the left. Rows go from slowest to fastest, so anything further down
+also works for your n. n is the length of the input; for a grid it's rows × cols.
 
-| Constraint | Algorithm |
-|---|---|
-| **How big n is** | |
-| n ≤ 10 | Try every order (backtracking over permutations) |
-| n ≤ 20 | Try every subset: take it or skip it (backtracking) |
-| n ≤ 100 | Three nested loops: every triplet |
-| n ≤ 3,000 | Two nested loops: every pair |
-|  | DP that looks back at every j < i (Longest Increasing Subsequence, Word Break) |
-|  | DP on two strings, `dp[i][j]` (Longest Common Subsequence) |
-| n ≤ 10⁵ or more | Sort first; sort, then merge |
-|  | Heap |
-|  | Binary search inside a loop |
-|  | Hash map or set; running total + hash map |
-|  | Two pointers |
-|  | Sliding window |
-|  | Stack |
-|  | DFS or BFS; tree recursion |
-|  | DP with one loop (Climbing Stairs, House Robber); DP on a grid |
-|  | Linked list tricks |
-| a value up to 10⁹ | Binary search on the answer: only about 30 tries |
-|  | A hash map, not a list indexed by value |
-| **What else the constraints say** | |
-| the array is sorted | Binary search |
-|  | Two pointers from both ends |
-| values can be negative | Running total + hash map (a sliding window on sums breaks) |
-| only lowercase letters, or values 0 to 100 | A count array such as `[0] * 26`, instead of sorting |
-| an amount or target up to 10⁴ | DP over every amount from 0 to the target (Coin Change, Partition Equal Subset Sum) |
-| a k is given | A heap of size k |
-| a grid up to 300 × 300 | DFS or BFS over every cell |
-|  | DP on a grid |
-| up to 10⁵ nodes and edges | DFS or BFS |
-| "must run in O(log n)" | Binary search |
-| "O(n) time" on unsorted input | A hash set or count array, no sorting |
-| "O(1) extra space" | Two pointers |
-|  | Slow and fast pointers |
-|  | Change the input in place |
+<table>
+<tr><th>Constraint</th><th>Time</th><th>Algorithm</th><th>Type of question</th></tr>
+<tr><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order</td><td>every arrangement (Permutations)</td></tr>
+<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it</td><td>every subset or combination (Subsets)</td></tr>
+<tr><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops</td><td>every triplet</td></tr>
+<tr><td rowspan="4">n ≤ 3,000</td><td rowspan="4">O(n²)</td><td>Two nested loops</td><td>every pair</td></tr>
+<tr><td>Sort, then two pointers for each item</td><td>triplets that add up to a target (3Sum)</td></tr>
+<tr><td>DP that looks back at every j &lt; i</td><td>longest increasing subsequence; split a string into words (Word Break)</td></tr>
+<tr><td>DP on two strings</td><td>common subsequence, edit distance (Longest Common Subsequence)</td></tr>
+<tr><td rowspan="13">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort, then scan</td><td>overlapping intervals (Merge Intervals)</td></tr>
+<tr><td>O(n log k)</td><td>Heap of size k</td><td>the k largest, smallest or closest (Kth Largest Element, K Closest Points)</td></tr>
+<tr><td>O(n log m)</td><td>Binary search on the answer</td><td>the smallest X that works (Koko Eating Bananas)</td></tr>
+<tr><td rowspan="10">O(n)</td><td>Hash map or set</td><td>seen this before? counting, grouping (Two Sum, Group Anagrams)</td></tr>
+<tr><td>Running total + hash map</td><td>a subarray whose sum is k (Subarray Sum Equals K)</td></tr>
+<tr><td>Two pointers</td><td>a pair in a sorted array, palindromes (Two Sum II, Container With Most Water)</td></tr>
+<tr><td>Sliding window</td><td>the longest or shortest substring or subarray that follows a rule (Longest Substring Without Repeating Characters)</td></tr>
+<tr><td>Stack</td><td>the next greater or warmer item, matching brackets (Daily Temperatures, Valid Parentheses)</td></tr>
+<tr><td>DFS or BFS</td><td>regions in a grid, something spreading, the fewest steps (Number of Islands, Rotting Oranges)</td></tr>
+<tr><td>Tree recursion</td><td>any binary tree (Maximum Depth, Validate BST)</td></tr>
+<tr><td>DP with one loop</td><td>the number of ways, or the best total (Climbing Stairs, House Robber)</td></tr>
+<tr><td>DP on a grid</td><td>paths through a grid (Unique Paths)</td></tr>
+<tr><td>Slow and fast pointers, dummy node</td><td>linked lists: cycle, middle, nth from the end (Linked List Cycle)</td></tr>
+<tr><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount from 0 up</td><td>make an amount, or a subset that adds up to a target (Coin Change, Partition Equal Subset Sum)</td></tr>
+<tr><td>n ≤ 10⁹ or more</td><td>O(log n)</td><td>Binary search</td><td>find a target, or where it goes, in a sorted array (Binary Search, Find Minimum in Rotated Sorted Array)</td></tr>
+</table>
 
-A row passes if it takes under about 10⁷ steps, which Python does in about a second.
-That's why n ≤ 10⁴ already rules out two nested loops: 10⁴ × 10⁴ is 10⁸ steps.
+k is the k in the question, and m is the largest value. A row passes if it takes
+under about 10⁷ steps, which Python does in about a second.
 
 ---
 

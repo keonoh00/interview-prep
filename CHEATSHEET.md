@@ -10,46 +10,50 @@ Before writing code, take about two minutes and say three things out loud:
 
 ## Step 1: What do the constraints allow?
 
-Find your n in the top row, then read down the column: ✅ will pass, ❌ will time
-out. If your n falls between two columns, use the bigger one. For a grid, n is
-rows × cols; for a graph, it's nodes + edges.
+Find your constraint on the left. The algorithms on the right will pass. The top part
+goes from slowest to fastest, so everything further down works for your n too. For a
+grid, n is rows × cols.
 
-| Algorithm | n ≤ 10 | n ≤ 20 | n ≤ 100 | n ≤ 3,000 | n ≤ 10⁴ | n ≤ 10⁵ or more |
-|---|---|---|---|---|---|---|
-| Try every order (backtracking over permutations) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Try every subset: take it or skip it (backtracking) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| Three nested loops: every triplet | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| Two nested loops: every pair, or a 2D DP table | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
-| Sort first; sort, then merge | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Heap | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Binary search inside a loop, or on the answer | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Hash map or set; running total + hash map | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Two pointers; sliding window | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Stack | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| DFS or BFS; tree recursion | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| DP with one loop | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Linked list tricks | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Binary search on a sorted array | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+<table>
+<tr><th>Constraint</th><th>Algorithm</th></tr>
+<tr><th colspan="2">How big n is</th></tr>
+<tr><td>n ≤ 10</td><td>Try every order (backtracking over permutations)</td></tr>
+<tr><td>n ≤ 20</td><td>Try every subset: take it or skip it (backtracking)</td></tr>
+<tr><td>n ≤ 100</td><td>Three nested loops: every triplet</td></tr>
+<tr><td rowspan="3">n ≤ 3,000</td><td>Two nested loops: every pair</td></tr>
+<tr><td>DP that looks back at every j &lt; i (Longest Increasing Subsequence, Word Break)</td></tr>
+<tr><td>DP on two strings, <code>dp[i][j]</code> (Longest Common Subsequence)</td></tr>
+<tr><td rowspan="10">n ≤ 10⁵ or more</td><td>Sort first; sort, then merge</td></tr>
+<tr><td>Heap</td></tr>
+<tr><td>Binary search inside a loop</td></tr>
+<tr><td>Hash map or set; running total + hash map</td></tr>
+<tr><td>Two pointers</td></tr>
+<tr><td>Sliding window</td></tr>
+<tr><td>Stack</td></tr>
+<tr><td>DFS or BFS; tree recursion</td></tr>
+<tr><td>DP with one loop (Climbing Stairs, House Robber); DP on a grid</td></tr>
+<tr><td>Linked list tricks</td></tr>
+<tr><td rowspan="2">a value up to 10⁹</td><td>Binary search on the answer: only about 30 tries</td></tr>
+<tr><td>A hash map, not a list indexed by value</td></tr>
+<tr><th colspan="2">What else the constraints say</th></tr>
+<tr><td rowspan="2">the array is sorted</td><td>Binary search</td></tr>
+<tr><td>Two pointers from both ends</td></tr>
+<tr><td>values can be negative</td><td>Running total + hash map (a sliding window on sums breaks)</td></tr>
+<tr><td>only lowercase letters, or values 0 to 100</td><td>A count array such as <code>[0] * 26</code>, instead of sorting</td></tr>
+<tr><td>an amount or target up to 10⁴</td><td>DP over every amount from 0 to the target (Coin Change, Partition Equal Subset Sum)</td></tr>
+<tr><td>a k is given</td><td>A heap of size k</td></tr>
+<tr><td rowspan="2">a grid up to 300 × 300</td><td>DFS or BFS over every cell</td></tr>
+<tr><td>DP on a grid</td></tr>
+<tr><td>up to 10⁵ nodes and edges</td><td>DFS or BFS</td></tr>
+<tr><td>"must run in O(log n)"</td><td>Binary search</td></tr>
+<tr><td>"O(n) time" on unsorted input</td><td>A hash set or count array, no sorting</td></tr>
+<tr><td rowspan="3">"O(1) extra space"</td><td>Two pointers</td></tr>
+<tr><td>Slow and fast pointers</td></tr>
+<tr><td>Change the input in place</td></tr>
+</table>
 
-For example, `1 <= nums.length <= 10^5` is the last column: two nested loops time
-out, so use sorting, a hash map, two pointers, a sliding window, and so on. ✅ means
-it finishes in about a second in Python, which does about 10⁷ simple steps a second.
-
-Other clues in the constraints:
-
-| The constraints say | Algorithm |
-|---|---|
-| the array is sorted | binary search, or two pointers from both ends |
-| the answer can be as big as 10⁹ | binary search on the answer: only about 30 tries |
-| values can be as big as 10⁹ | a hash map, not a list indexed by value |
-| only lowercase letters, or values in a small range like 0 to 100 | a count array such as `[0] * 26` instead of sorting |
-| values can be negative | a sliding window on sums breaks, so use running total + hash map |
-| a k is given | a heap of size k |
-| a grid up to 300 × 300 | DFS or BFS over every cell |
-| up to 10⁵ nodes and edges | DFS or BFS |
-| "must run in O(log n)" | binary search |
-| "O(n) time" on unsorted input | no sorting, so a hash set or count array |
-| "O(1) extra space" | two pointers, slow and fast pointers, or change the input in place |
+A row passes if it takes under about 10⁷ steps, which Python does in about a second.
+That's why n ≤ 10⁴ already rules out two nested loops: 10⁴ × 10⁴ is 10⁸ steps.
 
 ---
 
@@ -297,10 +301,55 @@ def merge(intervals):
 ```
 
 ### Dynamic programming
-- **Clue:** the number of ways, or the best total where each choice depends on earlier
-  ones
-- **How:** build the answer for i from the answers for i - 1 and i - 2
+- **Clue:** the number of ways; the fewest, most or best total; "can you make X?";
+  each choice depends on earlier ones
+- **How:** answer four questions before coding:
+  1. What does `dp[i]` mean? Say it in words, like "the number of ways to reach
+     step i".
+  2. How is `dp[i]` built from smaller answers? Look at the last choice made.
+  3. What are the base cases, like `dp[0]`?
+  4. Where is the answer: `dp[n]`, or `max(dp)`?
 - **Done:** Climbing Stairs, House Robber
+
+| Pattern | Clue | `dp[i]` means | Built from |
+|---|---|---|---|
+| One line | steps, houses in a row | the answer for the first i items | `dp[i - 1]` and `dp[i - 2]` |
+| Ends at i | longest increasing subsequence | the best that ends exactly at i | every `dp[j]` with j < i |
+| Split a string | can s be split into words? | `s[:i]` can be split | `dp[j]` where `s[j:i]` is a word |
+| Make an amount | coins, as many of each as you like | the fewest coins that make amount a | `dp[a - coin]` for each coin |
+| Use each once | a subset that adds up to a target | some numbers add up to s | `dp[s - num]`, with s going down |
+| Grid | paths through a grid | the answer at cell (r, c) | the cell above and the cell to the left |
+| Two strings | common subsequence, edit distance | the answer for `a[:i]` and `b[:j]` | `dp[i - 1][j - 1]`, `dp[i - 1][j]`, `dp[i][j - 1]` |
+
+One line, as a table (Climbing Stairs):
+
+```python
+def climb_stairs(n):
+    dp = [0] * (n + 1)  # dp[i] = ways to reach step i
+    dp[0] = dp[1] = 1
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]  # last move was 1 step, or 2 steps
+    return dp[n]
+```
+
+The same, top-down: write the plain recursion, then add `@cache` so each `i` is
+worked out only once. Python stops recursion about 1,000 calls deep, so for a bigger n
+use the table.
+
+```python
+from functools import cache
+
+def climb_stairs(n):
+    @cache
+    def ways(i):  # ways to reach step i
+        if i <= 1:
+            return 1
+        return ways(i - 1) + ways(i - 2)
+
+    return ways(n)
+```
+
+One line, with two variables instead of a list (House Robber):
 
 ```python
 def rob(nums):
@@ -308,6 +357,88 @@ def rob(nums):
     for num in nums:
         prev2, prev1 = prev1, max(prev1, prev2 + num)  # skip it, or take it
     return prev1
+```
+
+Ends at i (Longest Increasing Subsequence):
+
+```python
+def length_of_lis(nums):
+    dp = [1] * len(nums)  # dp[i] = longest increasing subsequence that ends at i
+    for i in range(len(nums)):
+        for j in range(i):
+            if nums[j] < nums[i]:  # nums[i] can go after nums[j]
+                dp[i] = max(dp[i], dp[j] + 1)
+    return max(dp)
+```
+
+Split a string (Word Break):
+
+```python
+def word_break(s, word_dict):
+    words = set(word_dict)
+    dp = [True] + [False] * len(s)  # dp[i] = s[:i] can be split into words
+    for i in range(1, len(s) + 1):
+        for j in range(i):
+            if dp[j] and s[j:i] in words:  # s[:j] splits, and s[j:i] is a word
+                dp[i] = True
+                break
+    return dp[-1]
+```
+
+Make an amount (Coin Change):
+
+```python
+from math import inf
+
+def coin_change(coins, amount):
+    dp = [0] + [inf] * amount  # dp[a] = fewest coins that make a
+    for a in range(1, amount + 1):
+        for coin in coins:
+            if coin <= a:
+                dp[a] = min(dp[a], dp[a - coin] + 1)  # the last coin was `coin`
+    return dp[amount] if dp[amount] != inf else -1
+```
+
+Use each once (Partition Equal Subset Sum). Going down means `dp[s - num]` still
+holds the answer from before this number, so it isn't used twice:
+
+```python
+def can_partition(nums):
+    total = sum(nums)
+    if total % 2:
+        return False
+    target = total // 2
+    dp = [True] + [False] * target  # dp[s] = some numbers so far add up to s
+    for num in nums:
+        for s in range(target, num - 1, -1):
+            dp[s] = dp[s] or dp[s - num]  # without num, or with it
+    return dp[target]
+```
+
+Grid (Unique Paths):
+
+```python
+def unique_paths(m, n):
+    dp = [[1] * n for _ in range(m)]  # dp[r][c] = paths to (r, c); edges have 1
+    for r in range(1, m):
+        for c in range(1, n):
+            dp[r][c] = dp[r - 1][c] + dp[r][c - 1]  # came from above, or from the left
+    return dp[-1][-1]
+```
+
+Two strings (Longest Common Subsequence). Row 0 and column 0 stand for an empty
+string, so they stay 0:
+
+```python
+def longest_common_subsequence(a, b):
+    dp = [[0] * (len(b) + 1) for _ in range(len(a) + 1)]  # dp[i][j] = answer for a[:i], b[:j]
+    for i in range(1, len(a) + 1):
+        for j in range(1, len(b) + 1):
+            if a[i - 1] == b[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1  # last letters match: keep both
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])  # drop a letter from a, or from b
+    return dp[-1][-1]
 ```
 
 ### Linked list tricks

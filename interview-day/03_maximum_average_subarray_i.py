@@ -23,7 +23,25 @@ Constraints:
 
 class Solution:
     def findMaxAverage(self, nums: list[int], k: int) -> float:
-        raise NotImplementedError
+        from collections import deque
+
+        stack: deque[int] = deque()
+
+        for i in range(k):
+            stack.append(nums[i])
+
+        window_sum = sum(stack)
+        largest = window_sum
+        i = k
+        while i < len(nums):
+            window_sum -= stack.popleft()
+            stack.append(nums[i])
+            window_sum += nums[i]
+            if largest < window_sum:
+                largest = window_sum
+            i += 1
+
+        return largest / k
 
 
 CASES = [

@@ -8,19 +8,65 @@ Before writing code, take about two minutes and say three things out loud:
 
 ---
 
+## Overview
+
+Every technique on this sheet at a glance. n is the length of the input unless the
+row says otherwise.
+
+| Technique | Clue in the wording | Time | Space | Done |
+|---|---|---|---|---|
+| Two pointers | sorted array; a pair or triplet that adds up to a target; palindrome | O(n); O(n²) for 3Sum | O(1) | Two Sum II, 3Sum, Container With Most Water, Valid Palindrome |
+| Hash map or set | "seen this before?", counting, grouping | O(n) | O(n) | Contains Duplicate, Valid Anagram, Group Anagrams, Top K Frequent Elements |
+| Running total + hash map | a contiguous subarray whose sum is k, negatives allowed | O(n) | O(n) | Subarray Sum Equals K |
+| Sliding window | the longest or shortest contiguous substring or subarray that follows a rule | O(n) | O(1), or O(n) for the window's set | Longest Substring Without Repeating Characters, Best Time to Buy and Sell Stock |
+| Binary search | sorted input; "the smallest X that works" | O(log n); on the answer, O(n log m), m = largest value | O(1) | Binary Search, Find Minimum in Rotated Sorted Array, Search a 2D Matrix, Koko Eating Bananas |
+| Stack | the next greater or warmer item; matching brackets | O(n) | O(n) | Daily Temperatures, Valid Parentheses, Min Stack |
+| Heap | the k largest, smallest or closest | O(n log k) | O(k) | Kth Largest Element in an Array, Kth Largest Element in a Stream, K Closest Points to Origin |
+| DFS or BFS | regions in a grid, something spreading, the fewest steps | O(rows × cols) | O(rows × cols) | Number of Islands, Rotting Oranges |
+| Tree recursion | any binary tree | O(n), n = nodes | O(h), h = tree height | Maximum Depth, Invert Binary Tree, Validate BST, Level Order Traversal |
+| Sort, then merge | overlapping intervals | O(n log n) | O(n) | Merge Intervals |
+| Dynamic programming | the number of ways, or the best total where each choice depends on earlier ones | O(n) | O(1) with two variables | Climbing Stairs, House Robber |
+| Linked list tricks | any linked list | O(n) | O(1) | Reverse Linked List, Merge Two Sorted Lists, Linked List Cycle, Remove Nth Node From End |
+| Hash map + linked list | get and put in O(1), dropping the oldest | O(1) per call | O(capacity) | LRU Cache |
+
+---
+
 ## Step 1: How fast do I need to be?
 
-Look at n in the problem's constraints. Python does about 10 million simple steps a
-second.
+Look at n in the problem's constraints. Python does about 10 million (10⁷) simple
+steps a second, so the steps at the largest n must stay under about 10⁷.
 
-| n is up to | Aim for |
+Find the first row whose n is at least the n in your constraints. That row's time is
+the slowest that will pass; anything faster is fine too.
+
+| n is up to | Aim for | Steps at that n | Techniques that fit |
+|---|---|---|---|
+| 10 | O(n!) | 3.6 million | try every order (backtracking over permutations) |
+| 20 | O(2ⁿ) | 1 million | try every subset: take it or skip it (backtracking) |
+| 200 | O(n³) | 8 million | three nested loops; DP over every range i..j |
+| 3,000 | O(n²) | 9 million | two nested loops over every pair; a 2D DP table |
+| 10⁵ | O(n log n) | 1.7 million | sort first; sort, then merge; heap; binary search inside a loop |
+| 10⁷ | O(n) | 10 million | one pass: hash map or set, two pointers, sliding window, running total, stack, 1D DP, DFS or BFS, linked list tricks |
+| 10⁹ and up (a value, not a length) | O(log n) | about 30 | binary search, on a sorted array or on the answer |
+
+For example, n ≤ 10⁴ falls in the 10⁵ row, so aim for O(n log n): O(n²) would be
+10⁸ steps, about 10 seconds. For a grid, n is rows × cols; for a graph, it's nodes +
+edges.
+
+Other clues in the constraints:
+
+| The constraints say | Think |
 |---|---|
-| 20 | O(2ⁿ), so trying every choice is fine |
-| 3,000 | O(n²) |
-| 100,000 or more | O(n) or O(n log n) |
-
-If the **answer** itself can be as big as 10⁹, think binary search on the answer.
-That's only about 30 tries.
+| the array is sorted | binary search, or two pointers from both ends |
+| the answer can be as big as 10⁹ | binary search on the answer: only about 30 tries |
+| values can be negative | a sliding window on sums breaks, so use running total + hash map |
+| only lowercase letters, or values in a small range like 0 to 100 | a count array such as `[0] * 26` instead of sorting |
+| a k is given | a heap of size k, O(n log k) |
+| a grid up to 300 × 300 | DFS or BFS over every cell, O(rows × cols) |
+| up to 10⁵ nodes and edges | DFS or BFS, O(nodes + edges) |
+| "must run in O(log n)" | binary search |
+| "O(n) time" on unsorted input | no sorting, so a hash set or count array |
+| "O(1) extra space" | two pointers, slow and fast pointers, or change the input in place |
 
 ---
 

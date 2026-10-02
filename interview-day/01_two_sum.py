@@ -27,7 +27,13 @@ Constraints:
 
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        raise NotImplementedError
+        collection = dict()
+        for x in range(len(nums)):
+            pair = target - nums[x]
+            if pair in collection:
+                return [collection[pair], x]
+            else:
+                collection[nums[x]] = x
 
 
 CASES = [

@@ -2,41 +2,47 @@
 
 Before writing code, take about two minutes and say three things out loud:
 
-1. **The constraints:** which algorithms will pass?
+1. **The type and the constraints:** which algorithm fits?
 2. **The brute force:** what does it keep repeating?
 3. **The clue in the wording:** which technique does it point to?
 
 ---
 
-## Step 1: What do the constraints allow?
+## Step 1: What type of question, and how big is n?
 
-Find your n on the left. Rows go from slowest to fastest, so anything further down
-also works for your n. n is the length of the input; for a grid it's rows × cols.
+Find the type of question on the left, then the row for your n. Where a type has two
+rows, the first is the brute force for small n and the second is the faster one for
+big n.
 
 <table>
-<tr><th>Constraint</th><th>Time</th><th>Algorithm</th><th>Type of question</th></tr>
-<tr><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order</td><td>every arrangement (Permutations)</td></tr>
-<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it</td><td>every subset or combination (Subsets)</td></tr>
-<tr><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops</td><td>every triplet</td></tr>
-<tr><td rowspan="4">n ≤ 3,000</td><td rowspan="4">O(n²)</td><td>Two nested loops</td><td>every pair</td></tr>
-<tr><td>Sort, then two pointers for each item</td><td>triplets that add up to a target (3Sum)</td></tr>
-<tr><td>DP that looks back at every j &lt; i</td><td>longest increasing subsequence; split a string into words (Word Break)</td></tr>
-<tr><td>DP on two strings</td><td>common subsequence, edit distance (Longest Common Subsequence)</td></tr>
-<tr><td rowspan="13">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort, then scan</td><td>overlapping intervals (Merge Intervals)</td></tr>
-<tr><td>O(n log k)</td><td>Heap of size k</td><td>the k largest, smallest or closest (Kth Largest Element, K Closest Points)</td></tr>
-<tr><td>O(n log m)</td><td>Binary search on the answer</td><td>the smallest X that works (Koko Eating Bananas)</td></tr>
-<tr><td rowspan="10">O(n)</td><td>Hash map or set</td><td>seen this before? counting, grouping (Two Sum, Group Anagrams)</td></tr>
-<tr><td>Running total + hash map</td><td>a subarray whose sum is k (Subarray Sum Equals K)</td></tr>
-<tr><td>Two pointers</td><td>a pair in a sorted array, palindromes (Two Sum II, Container With Most Water)</td></tr>
-<tr><td>Sliding window</td><td>the longest or shortest substring or subarray that follows a rule (Longest Substring Without Repeating Characters)</td></tr>
-<tr><td>Stack</td><td>the next greater or warmer item, matching brackets (Daily Temperatures, Valid Parentheses)</td></tr>
-<tr><td>DFS or BFS</td><td>regions in a grid, something spreading, the fewest steps (Number of Islands, Rotting Oranges)</td></tr>
-<tr><td>Tree recursion</td><td>any binary tree (Maximum Depth, Validate BST)</td></tr>
-<tr><td>DP with one loop</td><td>the number of ways, or the best total (Climbing Stairs, House Robber)</td></tr>
-<tr><td>DP on a grid</td><td>paths through a grid (Unique Paths)</td></tr>
-<tr><td>Slow and fast pointers, dummy node</td><td>linked lists: cycle, middle, nth from the end (Linked List Cycle)</td></tr>
-<tr><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount from 0 up</td><td>make an amount, or a subset that adds up to a target (Coin Change, Partition Equal Subset Sum)</td></tr>
-<tr><td>n ≤ 10⁹ or more</td><td>O(log n)</td><td>Binary search</td><td>find a target, or where it goes, in a sorted array (Binary Search, Find Minimum in Rotated Sorted Array)</td></tr>
+<tr><th>Type of question</th><th>Constraint</th><th>Time</th><th>Algorithm</th></tr>
+<tr><td rowspan="3">Pair that adds up to a target (Two Sum, Two Sum II)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Two nested loops: every pair</td></tr>
+<tr><td rowspan="2">n ≤ 10⁵</td><td rowspan="2">O(n)</td><td>Hash map: look up target − num</td></tr>
+<tr><td>Two pointers from both ends, if sorted</td></tr>
+<tr><td rowspan="2">Triplets that add up to a target (3Sum)</td><td>n ≤ 200</td><td>O(n³)</td><td>Three nested loops: every triplet</td></tr>
+<tr><td>n ≤ 3,000</td><td>O(n²)</td><td>Sort, then two pointers for each item</td></tr>
+<tr><td>Seen this before? Counting, grouping (Contains Duplicate, Group Anagrams, Top K Frequent Elements)</td><td>n ≤ 10⁵</td><td>O(n)</td><td>Hash map or set</td></tr>
+<tr><td rowspan="2">A subarray whose sum is k (Subarray Sum Equals K)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Every start, adding up to every end</td></tr>
+<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Running total + hash map</td></tr>
+<tr><td rowspan="2">The longest or shortest substring or subarray that follows a rule (Longest Substring Without Repeating Characters)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>Every start, growing to the right</td></tr>
+<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Sliding window</td></tr>
+<tr><td>Find a target in a sorted array (Binary Search, Search a 2D Matrix, Find Minimum in Rotated Sorted Array)</td><td>any n</td><td>O(log n)</td><td>Binary search</td></tr>
+<tr><td>The smallest X that works (Koko Eating Bananas)</td><td>answer up to 10⁹</td><td>O(n log m)</td><td>Binary search on the answer</td></tr>
+<tr><td rowspan="2">The next greater or warmer item, matching brackets (Daily Temperatures, Valid Parentheses)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>For each item, scan to the right</td></tr>
+<tr><td>n ≤ 10⁵</td><td>O(n)</td><td>Stack</td></tr>
+<tr><td rowspan="2">The k largest, smallest or closest (Kth Largest Element in an Array, K Closest Points to Origin)</td><td rowspan="2">n ≤ 10⁵</td><td>O(n log n)</td><td>Sort, then take the first k</td></tr>
+<tr><td>O(n log k)</td><td>Heap of size k</td></tr>
+<tr><td>Overlapping intervals (Merge Intervals)</td><td>n ≤ 10⁵</td><td>O(n log n)</td><td>Sort by start, then merge</td></tr>
+<tr><td>Regions in a grid, something spreading, the fewest steps (Number of Islands, Rotting Oranges)</td><td>rows, cols ≤ 300</td><td>O(rows × cols)</td><td>DFS, or BFS for the fewest steps</td></tr>
+<tr><td>Any binary tree (Maximum Depth, Validate BST, Level Order Traversal)</td><td>n ≤ 10⁴ nodes</td><td>O(n)</td><td>Tree recursion, or BFS for level by level</td></tr>
+<tr><td>Any linked list (Reverse Linked List, Linked List Cycle, Remove Nth Node From End)</td><td>n ≤ 10⁴ nodes</td><td>O(n)</td><td>Slow and fast pointers, dummy node</td></tr>
+<tr><td>The number of ways, or the best total along a line (Climbing Stairs, House Robber)</td><td>n ≤ 10⁵</td><td>O(n)</td><td>DP with one loop</td></tr>
+<tr><td>Longest increasing subsequence; split a string into words (Word Break)</td><td>n ≤ 3,000</td><td>O(n²)</td><td>DP that looks back at every j &lt; i</td></tr>
+<tr><td>Two strings: common subsequence, edit distance (Longest Common Subsequence)</td><td>each ≤ 1,000</td><td>O(len(a) × len(b))</td><td>DP on two strings</td></tr>
+<tr><td>Paths through a grid (Unique Paths)</td><td>rows, cols ≤ 100</td><td>O(rows × cols)</td><td>DP on a grid</td></tr>
+<tr><td>Make an amount, or a subset that adds up to a target (Coin Change, Partition Equal Subset Sum)</td><td>amount ≤ 10⁴</td><td>O(n × amount)</td><td>DP over every amount from 0 up</td></tr>
+<tr><td rowspan="2">Every arrangement or every subset (Permutations, Subsets)</td><td>n ≤ 10</td><td>O(n!)</td><td>Backtracking: try every order</td></tr>
+<tr><td>n ≤ 20</td><td>O(2ⁿ)</td><td>Backtracking: take it or skip it</td></tr>
 </table>
 
 k is the k in the question, and m is the largest value. A row passes if it takes

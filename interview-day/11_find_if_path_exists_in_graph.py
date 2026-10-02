@@ -35,7 +35,29 @@ class Solution:
     def validPath(
         self, n: int, edges: list[list[int]], source: int, destination: int
     ) -> bool:
-        raise NotImplementedError
+        from collections import defaultdict, deque
+
+        graph = defaultdict(list)
+        for s, d in edges:
+            graph[s].append(d)
+            graph[d].append(s)
+
+        q = deque()
+        q.append(source)
+        seen = {source}
+        while q:
+            sou = q.pop()
+            if sou == destination:
+                return True
+            des = graph[sou]
+
+            for d in des:
+                if d in seen:
+                    continue
+                seen.add(d)
+                q.append(d)
+
+        return False
 
 
 CASES = [

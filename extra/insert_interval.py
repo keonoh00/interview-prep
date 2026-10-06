@@ -35,9 +35,24 @@ Constraints:
   - newInterval.length == 2
   - 0 <= start <= end <= 10^5"""
 
+
 class Solution:
-    def insert(self, intervals: list[list[int]], newInterval: list[int]) -> list[list[int]]:
-        raise NotImplementedError
+    def insert(
+        self, intervals: list[list[int]], newInterval: list[int]
+    ) -> list[list[int]]:
+        intervals.append(newInterval)
+        intervals.sort()
+        if len(intervals) < 1:
+            return intervals
+
+        merged = [intervals[0]]
+        for start, end in intervals[1:]:
+            if start <= merged[-1][1]:  # overlaps the last one
+                merged[-1][1] = max(merged[-1][1], end)
+            else:
+                merged.append([start, end])
+        return merged
+
 
 CASES = [
     (([[1, 3], [6, 9]], [2, 5]), [[1, 5], [6, 9]]),

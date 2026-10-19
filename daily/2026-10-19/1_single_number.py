@@ -29,7 +29,10 @@ Constraints:
 
 class Solution:
     def singleNumber(self, nums: list[int]) -> int:
-        raise NotImplementedError
+        answer = 0
+        for n in nums:
+            answer ^= n
+        return answer
 
 
 CASES = [

@@ -67,6 +67,6 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import run
+    from leetcode import run
 
     run(Solution().numIslands, CASES)

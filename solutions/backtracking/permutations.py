@@ -35,7 +35,7 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import run
+    from leetcode import run
 
     # Sort only the outer list: inside a permutation, the order is the answer.
     run(lambda nums: sorted(Solution().permute(nums)), CASES)

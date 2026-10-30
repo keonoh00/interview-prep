@@ -55,6 +55,6 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import TreeNode, build_tree, run
+    from leetcode import TreeNode, build_tree, run
 
     run(lambda r: Solution().maxDepth(build_tree(r)), CASES)

@@ -61,7 +61,7 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
+    from leetcode import ListNode, build_linked_list, linked_list_to_list, run
 
     def call(vals, n):
         head = Solution().removeNthFromEnd(build_linked_list(vals), n)

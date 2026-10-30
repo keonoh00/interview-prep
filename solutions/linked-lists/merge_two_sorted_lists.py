@@ -70,7 +70,7 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
+    from leetcode import ListNode, build_linked_list, linked_list_to_list, run
 
     def call(a, b):
         merged = Solution().mergeTwoLists(build_linked_list(a), build_linked_list(b))

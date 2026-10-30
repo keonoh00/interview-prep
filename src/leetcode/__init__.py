@@ -1,7 +1,7 @@
 """Local test harness for the solutions/ exercises.
 
 Installed into the project venv by `uv sync`, so each solution file can just
-`from interview_prep import run` with no path juggling.
+`from leetcode import run` with no path juggling.
 """
 from .harness import (
     ListNode,

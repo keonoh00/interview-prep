@@ -47,7 +47,7 @@ CASES = [
 
 if __name__ == "__main__":
     # ListNode too, so your code can call ListNode() just as it can on LeetCode.
-    from interview_prep import ListNode, build_linked_list, linked_list_to_list, run
+    from leetcode import ListNode, build_linked_list, linked_list_to_list, run
 
     run(
         lambda h: linked_list_to_list(Solution().reverseList(build_linked_list(h))),

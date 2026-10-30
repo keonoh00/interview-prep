@@ -68,6 +68,6 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import run_design
+    from leetcode import run_design
 
     run_design(Trie, CASES)

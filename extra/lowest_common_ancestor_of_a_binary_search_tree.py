@@ -55,7 +55,7 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import TreeNode, build_tree, find_node, run
+    from leetcode import TreeNode, build_tree, find_node, run
 
     def call(vals, p, q):
         root = build_tree(vals)

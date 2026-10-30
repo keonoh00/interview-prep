@@ -56,6 +56,6 @@ CASES = [
 ]
 
 if __name__ == "__main__":
-    from interview_prep import TreeNode, build_tree, run, tree_to_list
+    from leetcode import TreeNode, build_tree, run, tree_to_list
 
     run(lambda r: tree_to_list(Solution().invertTree(build_tree(r))), CASES)

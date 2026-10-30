@@ -100,6 +100,6 @@ CASES = [
 
 if __name__ == "__main__":
     # Node too, so your code can call Node() just as it can on LeetCode.
-    from interview_prep import Node, build_graph, graph_to_adj, run
+    from leetcode import Node, build_graph, graph_to_adj, run
 
     run(lambda a: graph_to_adj(Solution().cloneGraph(build_graph(a))), CASES)

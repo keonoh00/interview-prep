@@ -1,4 +1,4 @@
-"""Local test harness for the solutions/ exercises.
+"""Local test harness for the problem files.
 
 Installed into the project venv by `uv sync`, so each solution file can just
 `from leetcode import run` with no path juggling.

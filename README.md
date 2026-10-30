@@ -1,14 +1,17 @@
 # leetcode
 
-48 problems for a live DS&A screen on **Friday 2 October 2026**. Each file under
-`solutions/` holds the LeetCode description, the stub, and the worked examples as
-runnable tests.
+Problems for a live DS&A screen on **Friday 2 October 2026**. Each file holds the
+LeetCode description, the stub, and the worked examples as runnable tests.
+
+- `daily/YYYY-MM-DD/`: the day's set.
+- `problems/`: everything else, one file per problem, like `two_sum.py`. A second
+  file for the same problem adds a suffix, like `3sum_resolve.py`.
 
 ## Running
 
 ```bash
-uv sync                                           # once
-uv run solutions/hash-maps/contains_duplicate.py  # one problem
+uv sync                                  # once
+uv run problems/contains_duplicate.py    # one problem
 ```
 
 Replace `raise NotImplementedError` with your code and it checks against LeetCode's

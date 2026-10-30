@@ -3,19 +3,27 @@
 Instructions for AI assistants working in this repo.
 
 The user is practicing for a live DS&A interview on Friday 2 October 2026. Each file
-under `solutions/` is one LeetCode problem: the statement, a `Solution` stub, and
-LeetCode's examples as tests. Run one with:
+is one LeetCode problem: the statement, a `Solution` stub, and LeetCode's examples
+as tests. Run one with:
 
 ```bash
-uv run solutions/<topic>/<problem>.py
+uv run problems/<problem>.py
 ```
+
+There are two folders:
+
+- `daily/YYYY-MM-DD/` holds that day's set. Problems are moved here from `problems/`.
+- `problems/` holds everything else in one flat folder, named after the LeetCode
+  title in snake_case, like `two_sum.py`. A second file for the same problem keeps
+  that name and adds a suffix: `_resolve` for a re-solve, or the approach for
+  another approach, like `middle_of_the_linked_list_slow_fast.py`.
 
 Keep things simple. Don't add tooling such as progress tracking, timers or prompts
 unless the user asks for it.
 
 ## Re-solving
 
-`re-solve/` holds problems already solved under `solutions/`, for practicing recall.
+A `_resolve` file is a problem already solved, done again for practicing recall.
 Don't review these, but test them and say in one line whether it's good or bad.
 LeetCode hasn't accepted them, so the examples aren't enough. In a scratch script,
 also compare against a simple brute force on many random small inputs, try the edge
